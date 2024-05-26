@@ -107,6 +107,8 @@ body{
     display: flex;
     align-items: center;
     gap: 1;
+    width: 0.5px;
+    height: 0.5px;
 }
 
 .search-box{
