@@ -1,5 +1,8 @@
 /* Import Google Font cdn link */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
 
 *{
   margin: 0;
@@ -81,14 +84,21 @@ body{
 }
 
 /* Main Body Section */
-.main-content{
+.main--content{
     position: relative;
     background: #ebe9e9;
     width: 100%;
     padding: 1rem;
 }
 
-.header-wrapper{
+.header--wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.header--wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,19 +109,17 @@ body{
     margin-bottom: 1rem;
 }
 
-.header-title{
+.header--title{
     color: rgba(113, 99, 186, 255);
 }
 
-.user-info{
+.user--info{
     display: flex;
     align-items: center;
-    gap: 1;
-    width: 0.5px;
-    height: 0.5px;
+    gap: 1rem;
 }
 
-.search-box{
+.search--box{
     background: rgb(237, 237,237);
     border-radius: 15px;
     color: rgba(113, 99, 186, 255);
@@ -121,20 +129,123 @@ body{
     padding: 4px 12px;
 }
 
-.search-box input{
+.search--box input{
     background: transparent;
     padding: 10px;
 }
 
-.search-box i{
+.search--box i{
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.5s ease-out;
 }
 
-.search-box i:hover{
-    transform: scale(1.1);
+.search--box i:hover{
+    transform: scale(1.2);
 }
 
 /* card container */
+.card--container{
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
 
+.main--title{
+   color: rgba(113, 99, 186, 255);
+   padding-bottom: 10px;
+   font-size: 15px; 
+}
+
+.payment--card{
+    background: rgb(229, 223, 223);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+}
+
+.payment--card:hover{
+    transform:translateY(-5px);
+}
+
+.card--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.amount{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.amount--value{
+    font-size: 24px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+}
+
+.icon{
+    color: #fff;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background: red;
+}
+
+.card-detail{
+    font-size: 18px;
+    color: #777777;
+    letter-spacing: 2px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+
+
+/* Color CSS */
+
+.light-red{
+    background: rgb(251, 233, 233);
+}
+
+.light-purple{
+    background: rgb(254, 226, 254);
+}
+
+.light.green{
+    background: rgb(235, 254, 235);
+}
+
+.light-blue{
+    background: rgb(236, 236, 254);
+}
+
+.dark-red{
+    background: red;
+}
+
+.dark-purple{
+    background: purple;
+}
+
+.dark-green{
+    background: green;
+}
+
+.dark-blue{
+    background: blue;
+}
