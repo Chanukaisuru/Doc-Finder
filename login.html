@@ -37,27 +37,20 @@ if(isset($_POST['submit'])){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/4801a7dc21.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-   <!-- custom css file link  -->
+   <title>Login</title>
    <link rel="stylesheet" href="login.css">
-
 </head>
-   <body>
+<body>
 
-      <?php
+   <div class="background-image"></div>
+
+   <?php
       if(isset($message)){
          foreach($message as $message){
             echo '
@@ -69,18 +62,18 @@ if(isset($_POST['submit'])){
          }
       }
       ?>
-         
-      <div class="form-container">
 
-         <form action="" method="post">
-            <h3>LOGIN NOW</h3>
-            <input type="email" name="email" placeholder="Enter Your Email" required class="box">
-            <input type="password" name="password" placeholder="Enter Your Password" required class="box">
-            <input type="submit" name="submit" value="Login Now" class="btn">
-            <p>Don't have an account? <a href="register.php">Register now</a></p>
-         </form>
+   <!-- Login Form -->
+   <div class="form-container">
+      <form id="login-form">
+         <h3>Log In</h3>
+         <input type="email" id="login-email" placeholder="Enter Your Email" required>
+         <input type="password" id="login-password" placeholder="Enter Your Password" required>
+         <button type="submit">Login</button>
+         <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </form>
+   </div>
 
-      </div>
-
-   </body>
+   <script src="login.js"></script>
+</body>
 </html>
