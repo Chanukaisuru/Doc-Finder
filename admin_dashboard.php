@@ -5,7 +5,7 @@ session_start();
 // Check if the admin is logged in
 if (!isset($_SESSION['admin_name'])) {
     // Redirect to the login page if not logged in
-    header("Location: process_login.php");
+    header("Location: admin_login.html");
     exit();
 }
 ?>
@@ -20,5 +20,7 @@ if (!isset($_SESSION['admin_name'])) {
 <body>
     <h1>Welcome, Admin</h1>
     <p>Login successful!</p>
+    <a href="registration_admin.html">Register New Admin</a>
+    <p><a href="process_signup_doctor.php">Add Doctor Details</a></p>
 </body>
 </html>
