@@ -31,3 +31,12 @@ CREATE TABLE doctors (
     specilty VARCHAR(100) NOT NULL,
     d_reg VARCHAR(50) NOT NULL
 );
+
+CREATE TABLE feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    contact_number VARCHAR(15),
+    feedback_text TEXT NOT NULL,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
