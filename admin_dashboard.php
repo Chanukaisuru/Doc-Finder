@@ -20,7 +20,18 @@ if (!isset($_SESSION['admin_name'])) {
 <body>
     <h1>Welcome, Admin</h1>
     <p>Login successful!</p>
-    <a href="registration_admin.html">Register New Admin</a>
-    <p><a href="process_signup_doctor.php">Add Doctor Details</a></p>
+    <!-- Form to redirect to registration_admin -->
+    <form action="registration_admin.html" method="get">
+        <button type="submit" class="btn btn-primary">Register New Admin</button>
+    </form>
+    <!-- Form to redirect to process_signup_doctor -->
+   <form action="process_signup_doctor.php" method="get">
+        <button type="submit" class="btn btn-primary">Add Doctor Details</button>
+    </form>
+
+    <form action="feedback_view.php" method="get">
+        <button type="submit" class="btn btn-primary">feedback view</button>
+    </form>
+    
 </body>
 </html>
