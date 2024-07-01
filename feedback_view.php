@@ -3,7 +3,7 @@
 include 'database.php';
 
 // Fetch feedbacks
-$sql = "SELECT name, email, contact_number, feedback_text, created_at FROM feedback ORDER BY created_at DESC";
+$sql = "SELECT name, email, contact_number, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $conn->query($sql);
 ?>
 
@@ -45,7 +45,7 @@ $result = $conn->query($sql);
                                     <td>" . htmlspecialchars($row['email']) . "</td>
                                     <td>" . htmlspecialchars($row['contact_number']) . "</td>
                                     <td>" . htmlspecialchars($row['feedback_text']) . "</td>
-                                    <td>" . htmlspecialchars($row['created_at']) . "</td>
+                                    <td>" . htmlspecialchars($row['submitted_at']) . "</td>
                                 </tr>";
                         }
                     } else {

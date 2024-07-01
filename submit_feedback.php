@@ -15,9 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if ($stmt->execute()) {
-        echo "New feedback submitted successfully";
-        // Redirect to dashboard
-        header("Location: home.html");
+       // echo "New feedback submitted successfully";
+        echo "<script>alert('Feedback submitted successfully'); window.location.href='home.html';</script>";
         exit();
     } else {
         echo "Error: " . $stmt->error;

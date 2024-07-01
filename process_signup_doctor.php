@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['d_email'] = $d_email;
 
         // Redirect to a confirmation or dashboard page after successful signup
-        header("Location: home.html");
+        echo "<script>alert('signup successfully'); window.location.href='home.html';</script>";
         exit();
     } else {
         echo 'Error: ' . $stmt->error;
