@@ -28,10 +28,24 @@ if (!isset($_SESSION['admin_name'])) {
    <form action="process_signup_doctor.php" method="get">
         <button type="submit" class="btn btn-primary">Add Doctor Details</button>
     </form>
-
+    <!-- Form to redirect to process_delete_doctor -->
+    <form action="delete_doctor.php" method="get">
+        <button type="submit" class="btn btn-primary">Delete Doctor</button>
+    </form>
+    <!-- Form to redirect to process_add user -->
+   <form action="user_signup.php" method="get">
+        <button type="submit" class="btn btn-primary">Add Users</button>
+    </form>
+    <!-- Form to redirect to process_delete_user -->
+   <form action="delete_user.php" method="get">
+        <button type="submit" class="btn btn-primary">delete Users</button>
+    </form>
+     <!-- Form to redirect to process_feedback_view -->
     <form action="feedback_view.php" method="get">
         <button type="submit" class="btn btn-primary">feedback view</button>
     </form>
+
+    
     
 </body>
 </html>

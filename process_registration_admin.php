@@ -6,11 +6,12 @@ include 'database.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $admin_name = $_POST['admin_name'];
+    $email = $_POST['email']; // Changed from 'Email' to 'email'
     $password = $_POST['password'];
     $password_confirmation = $_POST['password_confirmation'];
 
     // Validate form data (basic validation)
-    if (empty($admin_name) || empty($password) || empty($password_confirmation)) {
+    if (empty($admin_name) || empty($email) || empty($password) || empty($password_confirmation)) {
         die('Please fill all required fields.');
     }
 
@@ -29,11 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Admin name already exists. Please choose a different name.');
     }
 
+    // Check if email already exists
+    $sql = "SELECT * FROM admins WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        die('Admin email already exists. Please choose a different email.');
+    }
+
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the database
-    $sql = "INSERT INTO admins (admin_name, password) VALUES (?, ?)";
+    $sql = "INSERT INTO admins (admin_name, password, email) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     // Check if statement was prepared correctly
@@ -42,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Bind parameters
-    $stmt->bind_param("ss", $admin_name, $hashed_password);
+    $stmt->bind_param("sss", $admin_name, $hashed_password, $email);
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -78,17 +90,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="admin_name">Admin Name</label>
             <input type="text" id="admin_name" name="admin_name" required>
         </div>
-
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
         <div>
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
-
         <div>
             <label for="password_confirmation">Repeat Password</label>
             <input type="password" id="password_confirmation" name="password_confirmation" required>
         </div>
-
         <button type="submit">Sign Up</button>
     </form>
 </body>
