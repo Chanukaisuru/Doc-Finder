@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Signup</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Admin Signup</h1>
+    <form method="post" action="process_registration_admin.php" novalidate>
+        <div>
+            <label for="admin_name">Admin Name</label>
+            <input type="text" id="admin_name" name="admin_name" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="password_confirmation">Repeat Password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
