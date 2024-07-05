@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -70,3 +71,62 @@ body {
 .btn:hover {
     background-color: #0056b3;
 }
+=======
+
+body {
+    font-family: 'Roboto Slab', serif;
+    background: #DAE2F8;
+    
+    background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);
+    
+    background: linear-gradient(to right, #D6A4A4, #DAE2F8);
+    
+}
+
+.h1-tag{
+    text-align: center;
+    margin-top: 3%;
+}
+.form-content-section{
+    width: 50%;
+    margin-top: 3%;
+    margin-left: 25%;
+}
+@media screen and (max-width: 600px){
+    .form-content-section{
+        width: 100%;
+        margin-top: 10%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .form-content-section{
+        width: 100%;
+        margin-top: 10%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .form-group{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .btn-primary{
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 800px){
+    .form-group{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .btn-primary{
+        margin-left: 20px;
+    }
+}
+.myclass{
+    border-radius: 40px;
+}
+>>>>>>> master
