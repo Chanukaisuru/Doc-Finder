@@ -3,67 +3,55 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
+    
 }
 
 .container {
     display: flex;
+    margin: 15px 15px 15px;
+    
 }
 
 .sidebar {
     width: 25%;
     height: 100vh;
-    padding: 50px 0;
     background-color: #ddd;
-    position: fixed;
+    position: fixed; 
+    border-radius: 8px;  
+    
 }
 
 .distric_filter {
     margin-top: 50px;
-    padding: 30px 40px;
+    padding: 30px 40px;    
 }
 
 .distric_filter h3 {
-    margin-bottom: 30px;
-}
-
-.content {
-    width: 75%;
-    position: absolute;
-    right: 0;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-    border-bottom: 1px solid #eee;
-    color: #383838;
-    background-color: #eee;
-}
-
-.header p {
-    font-size: 30px;
-    font-weight: bold;
+    margin: 30px 30px;
+    color: #0e31cc;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+      
 }
 
 .fil-p {
     padding: 15px 15px;
-    background-color: white;
-    margin: 7px 0;
+    background-color: rgb(255, 255, 255);
+    margin: 7px 10px;
     cursor: pointer;
     color: #333;
     text-align: justify;
-    width: 100%; /* Ensure button takes full width */
+    width: 100px; /* Ensure button takes full width */
+   
 }
 
 .fil-p:hover {
-    color: orangered;
+    color: rgb(79, 52, 231);
     background-color: #aaa;
 }
 
 button {
-    width: 100%;
+    width:100px;
     position: relative;
     border: none;
     border-radius: 5px;
@@ -71,6 +59,31 @@ button {
     padding: 7px 25px;
     cursor: pointer;
     color: wheat;
+  
+    
+}
+.content {
+    width: 75%;
+    position: absolute;
+    right: 0;
+}
+
+.header {
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    border-bottom: 1px solid #eee;
+    color: #383838;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+.header p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0e31cc;
 }
 
 #root{
