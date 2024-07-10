@@ -6,11 +6,11 @@ include 'database.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $admin_name = $_POST['admin_name'];
-    $email = $_POST['email']; // Changed from 'Email' to 'email'
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $password_confirmation = $_POST['password_confirmation'];
 
-    // Validate form data (basic validation)
+    // Validate form data
     if (empty($admin_name) || empty($email) || empty($password) || empty($password_confirmation)) {
         die('Please fill all required fields.');
     }
@@ -19,26 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Passwords do not match.');
     }
 
-    // Check if admin_name already exists
-    $sql = "SELECT * FROM admins WHERE admin_name = ?";
+    // Check if admin_name or email already exists
+    $sql = "SELECT * FROM admins WHERE admin_name = ? OR email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $admin_name);
+    $stmt->bind_param("ss", $admin_name, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        die('Admin name already exists. Please choose a different name.');
-    }
-
-    // Check if email already exists
-    $sql = "SELECT * FROM admins WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        die('Admin email already exists. Please choose a different email.');
+        die('Admin name or email already exists. Please choose different ones.');
     }
 
     // Hash the password
@@ -48,30 +37,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO admins (admin_name, password, email) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
-    // Check if statement was prepared correctly
     if (!$stmt) {
         die('Prepare failed: (' . $conn->errno . ') ' . $conn->error);
     }
 
-    // Bind parameters
     $stmt->bind_param("sss", $admin_name, $hashed_password, $email);
 
-    // Execute the statement
     if ($stmt->execute()) {
-        // Start the session
         session_start();
-
-        // Set session variable
         $_SESSION['admin_name'] = $admin_name;
-
-        // Redirect to admin_dashboard.php after successful signup
         header("Location: home.html");
-        exit(); // Ensure no further code is executed
+        exit();
     } else {
         echo 'Error: ' . $stmt->error;
     }
 
-    // Close the statement and connection
     $stmt->close();
     $conn->close();
 }

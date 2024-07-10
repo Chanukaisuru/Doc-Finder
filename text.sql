@@ -2,15 +2,7 @@ admin_name = admin
 asmin password = admin123
 
 
-(tables)
 
-admin -> admin_name(p),password
-
-doctor -> d_id(AI),d_name,d_phone,d_password,qualification,specilty,d_reg
-
-feedback _> name, email,messge,f_id(AI)
-
-user -> name, email, phone,u_id(AI)
 CREATE DATABASE doc_finder;
 
 -- Creating the admins table
