@@ -1,12 +1,13 @@
 <?php
+// Include Composer's autoloader
+require 'vendor/autoload.php';
+
 // Include the database connection file
 include 'database.php';
 
-// Include PHPMailer classes
+// Use PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php';
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,8 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $otp_code, $otp_expires_at, $email);
     $stmt->execute();
 
+    // Read email template
+    $template = file_get_contents('email_template.html');
+
+    // Replace placeholder with actual OTP code
+    $message = str_replace('{{OTP_CODE}}', $otp_code, $template);
+
     $subject = "Password Reset OTP";
-    $message = "Your OTP code for password reset is: <strong>$otp_code</strong>. This code is valid for 15 minutes.";
 
     $mail = new PHPMailer(true);
 
@@ -47,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'docfinder2001@gmail.com';
-        $mail->Password = 'kxag lwqe gark jwfm';
+        $mail->Username = 'docfinder2001@gmail.com'; // Replace with your email
+        $mail->Password = 'kxag lwqe gark jwfm'; // Replace with your email password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 

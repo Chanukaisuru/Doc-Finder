@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ss", $hashed_password, $email);
     $stmt->execute();
 
-    echo "Password reset successful. You can now <a href='home.html'>login</a>.";
+    //echo "Password reset successful. You can now <a href='process_login_admin.php'>login</a>.";
+    echo "<script>alert('OTP sent. Please check your email.'); window.location.href='process_login_admin.php';</script>";
 }
 ?>

@@ -1,3 +1,4 @@
+
 <?php
 // Include the database connection file
 include 'database.php';
@@ -18,32 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        die('Invalid or expired OTP.');
+        die('Invalid OTP or OTP has expired.');
     }
 
-    // OTP is valid, show password reset form
-    echo '<!DOCTYPE html>
-    <html>
-    <head>
-        <title>Reset Password</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    </head>
-    <body>
-        <h1>Reset Password</h1>
-        <form action="process_reset_password.php" method="post" novalidate>
-            <input type="hidden" name="email" value="' . htmlspecialchars($email) . '">
-            <div>
-                <label for="new_password">New Password</label>
-                <input type="password" id="new_password" name="new_password" required>
-            </div>
-            <div>
-                <label for="password_confirmation">Repeat Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required>
-            </div>
-            <button type="submit">Reset Password</button>
-        </form>
-    </body>
-    </html>';
+    // OTP is valid, redirect to reset password page
+    echo "<script>alert('OTP verified successfully. Please reset your password.'); window.location.href='reset_password.php?email=$email';</script>";
 }
 ?>

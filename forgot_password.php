@@ -13,6 +13,7 @@
             <input type="email" id="email" name="email" required>
         </div>
         <button type="submit">Submit</button>
+        
     </form>
 </body>
 </html>
