@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +37,7 @@
 }
 
 .fil-p {
-    padding: 15px 15px;
+    padding: 15px 5px;
     background-color: rgb(255, 255, 255);
     margin: 7px 10px;
     cursor: pointer;
@@ -94,7 +96,7 @@ button {
     padding: 30px;
 }
 
-.box{
+/*.box{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,4 +128,82 @@ button {
 h2{
     font-size: 20px;
     color: black;
+}*/
+.card .image{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: blue;
+}
+
+.card .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.card{
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    margin: 20px 0;
+    width: 300px;
+    
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background: blue;
+    border-radius: 20px 20px 0 0;
+}
+.card .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 100;
+}
+.card .name-profession{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: #333;
+
+}
+
+.name{
+    margin-top: -30px;
+    font-size: 25px;
+    font-weight: 600;
+    color: blue;
+}
+
+.specialty{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hospital,.distric{
+    font-weight: bold;
+}
+
+.star{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.star i{
+    font-size: 18px;
+    margin: 0 2px;
+    color: blue;
 }
