@@ -1,37 +1,53 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Admin Dashboard</title>
     <meta charset="UTF-8">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://fontawesome.com/icons/user?f=classic&s=solid"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="admin_dashboard.css">
 </head>
 <body>
-    <h1>Welcome, Admin</h1>
-    <p>Login successful!</p>
-    <!-- Form to redirect to registration_admin -->
-    <form action="registration_admin.html" method="get">
-        <button type="submit" class="btn btn-primary">Register New Admin</button>
-    </form>
-    <!-- Form to redirect to process_signup_doctor -->
-   <form action="process_signup_doctor.php" method="get">
-        <button type="submit" class="btn btn-primary">Add Doctor Details</button>
-    </form>
-    <!-- Form to redirect to process_delete_doctor -->
-    <form action="delete_doctor.html" method="get">
-        <button type="submit" class="btn btn-primary">Delete Doctor</button>
-    </form>
-   
-    <!-- Form to redirect to process_delete_user -->
-   <form action="delete_user.php" method="get">
-        <button type="submit" class="btn btn-primary">delete Users</button>
-    </form>
-     <!-- Form to redirect to process_feedback_view -->
-    <form action="feedback_view.php" method="get">
-        <button type="submit" class="btn btn-primary">feedback view</button>
-    </form>
-
+    <div class="headers">
+        <a href="#" class="logo">
+            <div class="lo">
+                <img src="doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
     
+        <div class="nav-button">
+            <button class="btn" id="logoutBtn">Sign Out</button>
+        </div>
     
+    </div>
+    <div class="wrapper">
+        <h1>Welcome, Admin</h1>
+        <p>Login successful!</p>
+        <!-- Form to redirect to registration_admin -->
+            <form action="registration_admin.html" method="get">
+                <button type="submit" class="btn-btn-primary">Register New Admin</button>
+            </form>
+            <!-- Form to redirect to process_signup_doctor -->
+            <form action="process_signup_doctor.php" method="get">
+                <button type="submit" class="btn-btn-primary">Add Doctor</button>
+            </form>
+            <!-- Form to redirect to process_delete_doctor -->
+            <form action="delete_doctor.php" method="get">
+                <button type="submit" class="btn-btn-primary">Delete Doctor</button>
+            </form>
+            <!-- Form to redirect to process_delete_user -->
+            <form action="delete_user.php" method="get">
+                <button type="submit" class="btn-btn-primary">Delete User</button>
+            </form>
+            <!-- Form to redirect to process_feedback_view -->
+            <form action="feedback_view.php" method="get">
+                <button type="submit" class="btn-btn-primary">Feedback view</button>
+            </form>
+            <!-- contact us messages-->
+            <form action="user_signup.php" method="get">
+                <button type="submit" class="btn-btn-primary">User Message</button>
+            </form>
+    </div> 
 </body>
 </html>
