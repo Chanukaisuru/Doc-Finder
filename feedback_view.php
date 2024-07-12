@@ -58,7 +58,7 @@ $result = $conn->query($sql);
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.php" method="get">
+    <form action="admin_dashboard.html" method="get">
         <button type="submit" class="btn btn-primary">Go to Admin Dashboard</button>
     </form>
 
