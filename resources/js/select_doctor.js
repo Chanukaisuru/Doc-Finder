@@ -14,12 +14,18 @@ document.getElementById('btns').innerHTML = btns.map(btn => {
 }).join('');
 
 const card = [
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'Matar', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 4 },
-    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Isuru', distric: 'colombo', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 5 },
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Kamal', distric: 'Matar', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 3 },
-    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Surith', distric: 'Galle', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 4 },
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sarith', distric: 'Matar', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 2 },
-    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'colombo', Specile: 'genaral', hospital: 'Distric Genaral Hospital', rating: 5 },
+    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 4 },
+    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Isuru', distric: 'colombo', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 5 },
+    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Kamal', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 3 },
+    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.C.P.Vidana Pathirana', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 4 },
+    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sarith', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 2 },
+    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'colombo', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 5 },
+    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Lokuarachchi', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Privat Medical Center', rating: 5 },
+    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Akalanka Dodamgoda', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Reproductive Health Clinic', rating: 3 },
+    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Ruwan', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Privat Medical Center', rating: 4 },
+
+
+
 ];
 
 const categories = [...new Set(card.map(item => { return item }))];
