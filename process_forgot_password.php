@@ -17,24 +17,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Please fill all fields.');
     }
 
-    $sql = "SELECT * FROM admins WHERE email = ?";
+    // Check if the email exists in the users table
+    $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        die('Admin not found.');
+        die('User not found.');
     }
 
-    $admin = $result->fetch_assoc();
+    $user = $result->fetch_assoc();
 
     // Generate OTP code
     $otp_code = rand(100000, 999999);
-    $otp_expires_at = date("Y-m-d H:i:s", strtotime('+15 minutes')); // OTP valid for 15 minutes
+    $otp_expires_at = date("Y-m-d H:i:s", strtotime('+4 minutes')); // OTP valid for 4 minutes
 
-    // Update admin with OTP code and expiration time
-    $sql = "UPDATE admins SET otp_code = ?, otp_expires_at = ? WHERE email = ?";
+    // Update user with OTP code and expiration time
+    $sql = "UPDATE users SET otp_code = ?, otp_expires_at = ? WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $otp_code, $otp_expires_at, $email);
     $stmt->execute();

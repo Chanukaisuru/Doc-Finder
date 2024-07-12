@@ -20,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
     // Update the password and clear OTP
-    $sql = "UPDATE admins SET password = ?, otp_code = NULL, otp_expires_at = NULL WHERE email = ?";
+    $sql = "UPDATE users SET password = ?, otp_code = NULL, otp_expires_at = NULL WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $hashed_password, $email);
     $stmt->execute();
 
     //echo "Password reset successful. You can now <a href='process_login_admin.php'>login</a>.";
-    echo "<script>alert('OTP sent. Please check your email.'); window.location.href='process_login_admin.php';</script>";
+    echo "<script>alert('Password reset successful. You can now login.'); window.location.href='unified_login.html';</script>";
 }
 ?>
