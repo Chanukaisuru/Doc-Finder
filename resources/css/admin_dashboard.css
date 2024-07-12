@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-image: url('resources/img/doctor_admin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color:#fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+}
+
+.btn:hover{
+    background: var(--green);
+    letter-spacing: .1rem;
+}
+
+.headers {
+    position: fixed;
+    top:0; left: 0; right:0;
+    background:rgba(255, 255, 255, 0.7);
+    padding:1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+    height: 70px;
+}
+.headers .logo{
+    color:var(--black);
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-left: 100px;
+}
+.headers .logo img{ 
+    width: 50px;
+    height: 50px;
+}
+
+.lo{
+    position: fixed;
+    margin-left:-110px;
+    margin-top: -20px;
+}
+
+.headers .nav-button .btn {
+    width: 150px;
+    height: 40px;
+    font-weight: 500;
+    background: lightskyblue;
+    border: none;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+#logoutBtn {
+    margin-left: 15px;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/*nav bar end*/
+
+h1, p {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.btn-btn-primary {
+    width: 100%;
+    height: 45px;
+    margin: 2px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.btn-btn-primary:hover {
+    background-color: lightskyblue;
+}
+
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 85px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-left: 200px;
+}
+
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .btn-btn-primary {
+    width: 100%;
+    height: 45px;
+    background: lightskyblue;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+}
