@@ -1,4 +1,3 @@
-
 <?php
 // Include the database connection file
 include 'database.php';
@@ -12,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Please fill all fields.');
     }
 
-    $sql = "SELECT * FROM admins WHERE email = ? AND otp_code = ? AND otp_expires_at > NOW()";
+    // Check if the email and OTP code are valid and the OTP has not expired
+    $sql = "SELECT * FROM users WHERE email = ? AND otp_code = ? AND otp_expires_at > NOW()";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $email, $otp_code);
     $stmt->execute();
