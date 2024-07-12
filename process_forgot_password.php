@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Generate OTP code
     $otp_code = rand(100000, 999999);
-    $otp_expires_at = date("Y-m-d H:i:s", strtotime('+15 minutes')); // OTP valid for 15 minutes
+    $otp_expires_at = date("Y-m-d H:i:s", strtotime('+4 minutes')); // OTP valid for 4 minutes
 
     // Update user with OTP code and expiration time
     $sql = "UPDATE users SET otp_code = ?, otp_expires_at = ? WHERE email = ?";
