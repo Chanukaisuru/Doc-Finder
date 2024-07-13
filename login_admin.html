@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="resources/css/login_admin.css">
+</head>
+<body>
+    <div class="headers">
+        <a href="#" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
+    </div>
+
+    <div class="wrapper">
+        <h1>Admin Login</h1>
+        <form method="post">
+            <div class="input-box">
+                <label for="admin_name">Admin Name</label>
+                <input type="text" id="admin_name" name="admin_name" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="forgot">
+            <a href="forgot_password.php">Forgot Password?</a>
+        </div>
+    </div>
+</body>
+</html>
