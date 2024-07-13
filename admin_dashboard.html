@@ -17,7 +17,9 @@
         </a>
     
         <div class="nav-button">
-            <button class="btn" id="logoutBtn">Sign Out</button>
+            <form action="logout.php" method="post">
+            <button class="btn">Sign Out</button>
+            </form>
         </div>
     
     </div>
@@ -25,11 +27,11 @@
         <h1>Welcome, Admin</h1>
         <p>Login successful!</p>
         <!-- Form to redirect to registration_admin -->
-            <form action="registration_admin.html" method="get">
+            <form action="register_admin.html" method="get">
                 <button type="submit" class="btn-btn-primary">Register New Admin</button>
             </form>
             <!-- Form to redirect to process_signup_doctor -->
-            <form action="process_signup_doctor.php" method="get">
+            <form action="register_doctor.html" method="get">
                 <button type="submit" class="btn-btn-primary">Add Doctor</button>
             </form>
             <!-- Form to redirect to process_delete_doctor -->

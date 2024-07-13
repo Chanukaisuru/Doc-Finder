@@ -14,18 +14,22 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedbacks</title>
-
-    <!-- BOOTSTRAP CDN Links -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/css/feedback_view.css">
 </head>
 
 <body>
+    <div class="headers">
+        <a href="#" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
+    </div>
 
-    <section id="feedback-section">
-        <h1 class="h1-tag">Feedbacks</h1>
-        <div class="container">
-            <table class="table table-bordered">
+    <section id="feedback-section" class="wrapper">
+        <h1>Feedbacks</h1>
+        <div class="content-table">
+            <table>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -58,8 +62,8 @@ $result = $conn->query($sql);
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.html" method="get">
-        <button type="submit" class="btn btn-primary">Go to Admin Dashboard</button>
+    <form action="admin_dashboard.php" method="get">
+        <button type="submit" class="btn">Go to Admin Dashboard</button>
     </form>
 
 </body>
