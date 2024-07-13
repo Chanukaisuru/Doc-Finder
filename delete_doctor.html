@@ -1,0 +1,28 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Doctor</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="resources/css/delete_doctor.css">
+</head>
+<body>
+    <div class="headers">
+        <a href="#" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
+    </div>
+    <div class="wrapper">
+        <h1>Delete Doctor</h1>
+        <form action="delete_doctor.php" method="post" novalidate>
+            <div class="input-box">
+                <label for="d_reg">Doctor's registation number</label>
+                <input type="text" id="d_reg" name="d_reg" required>
+            </div>
+            <button type="submit" class="btn">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
