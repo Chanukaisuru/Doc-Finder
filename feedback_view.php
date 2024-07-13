@@ -14,7 +14,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedbacks</title>
-    <link rel="stylesheet" href="feedback_view.css">
+    <link rel="stylesheet" href="resources/css/feedback_view.css">
 </head>
 
 <body>

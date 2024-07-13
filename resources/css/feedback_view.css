@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('resources/img/feedback_veiw.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+html{
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+.headers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    height: 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.headers .logo{
+    color: var(--black);
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-left: 100px;
+}
+
+.headers .logo img{ 
+    width: 50px;
+    height: 50px;
+}
+
+.lo{
+    position: fixed;
+    margin-left: -110px;
+    margin-top: -20px;
+}
+
+.wrapper {
+    width: 80%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: black;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 85px;
+    overflow-x: auto;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: black;
+}
+
+.table th {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.table td {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.wrapper .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 1000px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.wrapper .content-table thead tr {
+    background-color: lightskyblue;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.wrapper .content-table th, .content-table td {
+    padding: 12px 73.58px;
+}
+
+.wrapper .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.wrapper .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.wrapper .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid lightskyblue;
+}
+
+.btn {
+    display: inline-block;
+    background: lightskyblue;
+    color: #333;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
