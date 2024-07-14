@@ -4,7 +4,7 @@
     <title>Delete User and Patient</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" href="resources/css/delete_patient.css">
+    <link rel="stylesheet" href="resources/css/delete_users.css">
 </head>
 <body>
 <div class="headers">
@@ -16,14 +16,19 @@
 </div>
 
 <!-- Form to enter Email and NIC -->
-<div class="wrapper">
-    <div>
+<div>
+    <div class="wrapper">
+        <h1>Delete User</h1>
         <form method="post" action="">
-            <label for="email">User Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="nic">Patient NIC:</label>
-            <input type="text" id="nic" name="nic" required>
-            <input type="submit" name="search" value="Search">
+            <div class="input-box">
+                <label for="email">User Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+                <label for="nic">Patient NIC:</label>
+                <input type="text" id="nic" name="nic" required>
+            </div>
+            <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
 
