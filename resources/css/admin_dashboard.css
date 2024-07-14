@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url('resources/img/doctor_admin.jpg');
+    background-image: url('../img/doctor_admin.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

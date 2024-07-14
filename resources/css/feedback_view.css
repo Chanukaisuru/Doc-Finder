@@ -12,7 +12,7 @@ body{
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-image: url('resources/img/feedback_veiw.jpg');
+    background-image: url('../img/feedback_veiw.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -81,6 +81,7 @@ html{
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    
 }
 
 .table th, .table td {
@@ -88,13 +89,14 @@ html{
     text-align: left;
     border-bottom: 1px solid #ddd;
     color: black;
+
 }
 
 .table th {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 50px;
+    font-weight: 600px;
 }
 
 .table td {
@@ -119,6 +121,7 @@ html{
 
 .wrapper .content-table th, .content-table td {
     padding: 12px 73.58px;
+    font-size: 20px;
 }
 
 .wrapper .content-table tbody tr {

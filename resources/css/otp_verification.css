@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 93vh;
-    background-image: url('otp_verification.jpg');
+    background-image: url('../img/otp_verification.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

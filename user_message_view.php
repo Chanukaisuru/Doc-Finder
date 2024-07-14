@@ -1,9 +1,9 @@
 <?php
-// Database connection details
+// Include the database connection file
 include 'database.php';
 
-// Fetch feedbacks
-$sql = "SELECT name, email, contact_number, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
+// Fetch messages
+$sql = "SELECT full_name, email, message_details, created_at FROM messages ORDER BY created_at DESC";
 $result = $conn->query($sql);
 ?>
 
@@ -13,8 +13,8 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedbacks</title>
-    <link rel="stylesheet" href="resources/css/feedback_view.css">
+    <title>User Messages</title>
+    <link rel="stylesheet" href="resources/css/user_message.css">
 </head>
 
 <body>
@@ -26,16 +26,15 @@ $result = $conn->query($sql);
         </a>
     </div>
 
-    <section id="feedback-section" class="wrapper">
-        <h1>Feedbacks</h1>
+    <section id="message-section" class="wrapper">
+        <h1>User Messages</h1>
         <div class="content-table">
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Full Name</th>
                         <th>Email</th>
-                        <th>Contact Number</th>
-                        <th>Feedback</th>
+                        <th>Message Details</th>
                         <th>Date Submitted</th>
                     </tr>
                 </thead>
@@ -45,15 +44,14 @@ $result = $conn->query($sql);
                         // Output data of each row
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>
-                                    <td>" . htmlspecialchars($row['name']) . "</td>
+                                    <td>" . htmlspecialchars($row['full_name']) . "</td>
                                     <td>" . htmlspecialchars($row['email']) . "</td>
-                                    <td>" . htmlspecialchars($row['contact_number']) . "</td>
-                                    <td>" . htmlspecialchars($row['feedback_text']) . "</td>
-                                    <td>" . htmlspecialchars($row['submitted_at']) . "</td>
+                                    <td>" . htmlspecialchars($row['message_details']) . "</td>
+                                    <td>" . htmlspecialchars($row['created_at']) . "</td>
                                 </tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='5'>No feedbacks found</td></tr>";
+                        echo "<tr><td colspan='4'>No messages found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -62,7 +60,7 @@ $result = $conn->query($sql);
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.html" method="get">
+    <form action="admin_dashboard.php" method="get">
         <button type="submit" class="btn">Go to Admin Dashboard</button>
     </form>
 
