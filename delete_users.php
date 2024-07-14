@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Delete Patient</title>
+    <title>Delete User and Patient</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_patient.css">
@@ -15,13 +15,15 @@
     </a>
 </div>
 
-<!-- Form to enter NIC -->
+<!-- Form to enter Email and NIC -->
 <div class="wrapper">
     <div>
-        <form method="post" action="delete_users.php">
+        <form method="post" action="">
+            <label for="email">User Email:</label>
+            <input type="email" id="email" name="email" required>
             <label for="nic">Patient NIC:</label>
             <input type="text" id="nic" name="nic" required>
-            <input type="submit" value="Search">
+            <input type="submit" name="search" value="Search">
         </form>
     </div>
 
@@ -29,90 +31,121 @@
     // Include the database connection file
     include 'database.php';
 
-    // Check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if the form is submitted for search
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
         // Get form data
+        $email = $_POST['email'];
         $nic = $_POST['nic'];
 
         // Validate form data
-        if (empty($nic)) {
-            echo 'Please provide the patient\'s NIC.';
+        if (empty($email) || empty($nic)) {
+            echo 'Please provide both the user\'s email and patient\'s NIC.';
         } else {
-            // Check if the delete request is made
-            if (isset($_POST['delete'])) {
-                // Prepare the delete statement
-                $sql = "DELETE FROM patients WHERE nic = ?";
-                $stmt = $conn->prepare($sql);
+            // Prepare the select statement for the patients table
+            $sql_patients = "SELECT nic, first_name, last_name, age, phone_no, address, province, sick FROM patients WHERE nic = ?";
+            $stmt_patients = $conn->prepare($sql_patients);
 
-                if (!$stmt) {
-                    die('Prepare failed: ' . $conn->error);
-                }
-
-                $stmt->bind_param("s", $nic);
-
-                if ($stmt->execute()) {
-                    // Check if any row was affected
-                    if ($stmt->affected_rows > 0) {
-                        // Redirect to the admin dashboard with a success message
-                        header("Location: admin_dashboard.html");
-                        exit();
-                    } else {
-                        echo "<p>No patient found with that NIC.</p>";
-                    }
-                } else {
-                    echo 'Error: ' . $stmt->error;
-                }
-
-                // Close the statement and connection
-                $stmt->close();
-            } else {
-                // Prepare the select statement
-                $sql = "SELECT nic, first_name, last_name, age, phone_no, address, province, sick FROM patients WHERE nic = ?";
-                $stmt = $conn->prepare($sql);
-
-                if (!$stmt) {
-                    die('Prepare failed: ' . $conn->error);
-                }
-
-                $stmt->bind_param("s", $nic);
-
-                if ($stmt->execute()) {
-                    $result = $stmt->get_result();
-
-                    if ($result->num_rows > 0) {
-                        // Fetch and display the patient's details
-                        $patient = $result->fetch_assoc();
-                        ?>
-                        <h2>Patient Details</h2>
-                        <p><strong>NIC:</strong> <?php echo htmlspecialchars($patient['nic']); ?></p>
-                        <p><strong>First Name:</strong> <?php echo htmlspecialchars($patient['first_name']); ?></p>
-                        <p><strong>Last Name:</strong> <?php echo htmlspecialchars($patient['last_name']); ?></p>
-                        <p><strong>Age:</strong> <?php echo htmlspecialchars($patient['age']); ?></p>
-                        <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patient['phone_no']); ?></p>
-                        <p><strong>Address:</strong> <?php echo htmlspecialchars($patient['address']); ?></p>
-                        <p><strong>Province:</strong> <?php echo htmlspecialchars($patient['province']); ?></p>
-                        <p><strong>Sick:</strong> <?php echo htmlspecialchars($patient['sick']); ?></p>
-
-                        <!-- Form to delete the patient -->
-                        <form method="post" action="">
-                            <input type="hidden" name="nic" value="<?php echo htmlspecialchars($patient['nic']); ?>">
-                            <input type="submit" name="delete" value="Delete Patient">
-                        </form>
-                        <?php
-                    } else {
-                        echo 'No patient found with that NIC.';
-                    }
-                } else {
-                    echo 'Error: ' . $stmt->error;
-                }
-
-                // Close the statement
-                $stmt->close();
+            if (!$stmt_patients) {
+                die('Prepare failed: ' . $conn->error);
             }
 
-            // Close the connection
-            $conn->close();
+            $stmt_patients->bind_param("s", $nic);
+
+            if ($stmt_patients->execute()) {
+                $result = $stmt_patients->get_result();
+
+                if ($result->num_rows > 0) {
+                    // Fetch and display the patient's details
+                    $patient = $result->fetch_assoc();
+                    ?>
+                    <h2>Patient Details</h2>
+                    <p><strong>NIC:</strong> <?php echo htmlspecialchars($patient['nic']); ?></p>
+                    <p><strong>First Name:</strong> <?php echo htmlspecialchars($patient['first_name']); ?></p>
+                    <p><strong>Last Name:</strong> <?php echo htmlspecialchars($patient['last_name']); ?></p>
+                    <p><strong>Age:</strong> <?php echo htmlspecialchars($patient['age']); ?></p>
+                    <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patient['phone_no']); ?></p>
+                    <p><strong>Address:</strong> <?php echo htmlspecialchars($patient['address']); ?></p>
+                    <p><strong>Province:</strong> <?php echo htmlspecialchars($patient['province']); ?></p>
+                    <p><strong>Sick:</strong> <?php echo htmlspecialchars($patient['sick']); ?></p>
+
+                    <!-- Form to confirm deletion -->
+                    <form method="post" action="">
+                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                        <input type="hidden" name="nic" value="<?php echo htmlspecialchars($nic); ?>">
+                        <input type="submit" name="delete" value="Delete Patient">
+                    </form>
+                    <?php
+                } else {
+                    echo 'No patient found with that NIC.';
+                }
+            } else {
+                echo 'Error: ' . $stmt_patients->error;
+            }
+
+            // Close the statement
+            $stmt_patients->close();
         }
+    }
+
+    // Check if the form is submitted for deletion
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
+        // Get form data
+        $email = $_POST['email'];
+        $nic = $_POST['nic'];
+
+        // Start a transaction
+        $conn->begin_transaction();
+
+        try {
+            // Prepare the delete statement for the patients table
+            $sql_patients = "DELETE FROM patients WHERE nic = ?";
+            $stmt_patients = $conn->prepare($sql_patients);
+
+            if (!$stmt_patients) {
+                throw new Exception('Prepare failed: ' . $conn->error);
+            }
+
+            $stmt_patients->bind_param("s", $nic);
+
+            // Execute the statement and check if any row was affected
+            if ($stmt_patients->execute() && $stmt_patients->affected_rows > 0) {
+                // Prepare the delete statement for the users table
+                $sql_users = "DELETE FROM users WHERE email = ?";
+                $stmt_users = $conn->prepare($sql_users);
+
+                if (!$stmt_users) {
+                    throw new Exception('Prepare failed: ' . $conn->error);
+                }
+
+                $stmt_users->bind_param("s", $email);
+
+                // Execute the statement and check if any row was affected
+                if ($stmt_users->execute() && $stmt_users->affected_rows > 0) {
+                    // Commit the transaction
+                    $conn->commit();
+                    // Redirect to the admin dashboard with a success message
+                    header("Location: admin_dashboard.html");
+                    exit();
+                } else {
+                    throw new Exception('No user found with that email.');
+                }
+            } else {
+                throw new Exception('No patient found with that NIC.');
+            }
+        } catch (Exception $e) {
+            // Rollback the transaction if an error occurred
+            $conn->rollback();
+            echo 'Error: ' . $e->getMessage();
+        }
+
+        // Close the statements and connection
+        if (isset($stmt_users)) {
+            $stmt_users->close();
+        }
+        if (isset($stmt_patients)) {
+            $stmt_patients->close();
+        }
+        $conn->close();
     }
     ?>
 </div>
