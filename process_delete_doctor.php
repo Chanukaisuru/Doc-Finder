@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Delete us</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Doctor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="resources/css/delete_doctor.css">
 </head>
 <body>
-    <h1>Delete Doctor</h1>
-
+<div class="headers">
+        <a href="#" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
+    </div>
+ 
     <!-- Form to enter registration number -->
-    <form method="post" action="">
-        <label for="reg_no">Doctor Registration Number:</label>
-        <input type="text" id="reg_no" name="reg_no" required>
-        <input type="submit" value="Search">
+     <div class="wrapper">
+        <div>
+          <form method="post" action="process_delete_doctor.php">
+          <label for="reg_no">Doctor Registration Number:</label>
+          <input type="text" id="reg_no" name="reg_no" required>
+          <input type="submit" value="Search">
     </form>
+        </div>
 
     <?php
     // Include the database connection file
