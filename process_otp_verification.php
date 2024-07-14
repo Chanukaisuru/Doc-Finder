@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // OTP is valid, redirect to reset password page
-    echo "<script>alert('OTP verified successfully. Please reset your password.'); window.location.href='reset_password.php?email=$email';</script>";
+    header("Location: reset_password.html");
+   // echo "<script>alert('OTP verified successfully. Please reset your password.'); window.location.href='reset_password.php?email=$email';</script>";
 }
 ?>
