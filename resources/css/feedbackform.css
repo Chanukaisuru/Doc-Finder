@@ -11,7 +11,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/feedback.jpg');
+    background-image: url('../img/feedback.png');
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -40,6 +40,7 @@ html, body {
     margin-bottom: 30px;
     color: rgb(44, 9, 247);
     font-style: normal;
+      
 }
 
 /* Form group and input styles */
