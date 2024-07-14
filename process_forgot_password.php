@@ -67,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = $message;
 
         $mail->send();
-        echo "OTP sent to your email.";
-        echo "<script>alert('OTP sent. Please check your email.'); window.location.href='otp_verification.html';</script>";
+        //echo "OTP sent to your email."; wnido alat
+        header("Location: otp_verification.html");
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

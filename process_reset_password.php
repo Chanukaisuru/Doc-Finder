@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST['new_password'];
     $password_confirmation = $_POST['password_confirmation'];
 
+    // Basic validation
     if (empty($email) || empty($new_password) || empty($password_confirmation)) {
         die('Please fill all fields.');
     }
@@ -22,10 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update the password and clear OTP
     $sql = "UPDATE users SET password = ?, otp_code = NULL, otp_expires_at = NULL WHERE email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $hashed_password, $email);
-    $stmt->execute();
 
-    //echo "Password reset successful. You can now <a href='process_login_admin.php'>login</a>.";
-    echo "<script>alert('Password reset successful. You can now login.'); window.location.href='unified_login.html';</script>";
+    if (!$stmt) {
+        die('Prepare failed: ' . $conn->error);
+    }
+
+    $stmt->bind_param("ss", $hashed_password, $email);
+
+    if ($stmt->execute()) {
+        // Redirect to login page after successful reset
+        header("Location: unified_login.html");
+        exit();
+    } else {
+        die('Error: ' . $stmt->error);
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
