@@ -15,8 +15,8 @@
         </a>
     </div>
     <div class="wrapper">
-        <form method="post" action="process_registration_admin.php" novalidate>
-            <h1> Admin Signup </h1>
+        <form method="post" action="process_register_admin.php" novalidate>
+            <h1>Admin Signup</h1>
             <div class="input-box">    
                 <label for="admin_name">Admin Name</label>
                 <input type="text" id="admin_name" name="admin_name" required>
@@ -33,9 +33,8 @@
                 <label for="password_confirmation">Repeat Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
             </div>
-            <form action="unified_login.html">
+            <form action="unified_login.html" method="post">
             <button type="submit" class="btn">Sign Up</button>
-            </form>
         </form>
     </div>
 </body>

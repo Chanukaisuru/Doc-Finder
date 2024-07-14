@@ -1,3 +1,12 @@
+<?php
+// Include the database connection file
+include 'database.php';
+
+// Fetch messages from the database
+$sql = "SELECT full_name, email, message_details FROM messages ORDER BY created_at DESC";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,14 +38,27 @@
                     </tr>
                 </thead>
                 <tbody>
-            
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td>{$row['full_name']}</td>
+                                    <td>{$row['email']}</td>
+                                    <td>{$row['message_details']}</td>
+                                  </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No messages found</td></tr>";
+                    }
+                    $conn->close();
+                    ?>
                 </tbody>
             </table>
         </div>
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.php" method="get">
+    <form action="admin_dashboard.html" method="get">
         <button type="submit" class="btn">Go to Admin Dashboard</button>
     </form>
 

@@ -5,10 +5,10 @@ include 'database.php';
 // Get form data
 $email = $_POST['email'];
 $password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
+$password_confirmation = $_POST['password_confirmation']; // Updated to match the form field name
 
 // Validate passwords
-if ($password !== $confirm_password) {
+if ($password !== $password_confirmation) {
     die("Passwords do not match.");
 }
 
@@ -45,7 +45,7 @@ $stmt_user = $conn->prepare($sql_user);
 $stmt_user->bind_param("ss", $email, $hashed_password);
 
 if ($stmt_user->execute()) {
-    echo "Admin registered successfully.";
+    header("Location:unified_login.html");
 } else {
     echo "Error: " . $stmt_user->error;
 }
