@@ -1,79 +1,31 @@
-<?php
-
-include 'connect.php';
-session_start();
-
-if(isset($_POST['submit'])){
-
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
-
-   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
-
-   if(mysqli_num_rows($select_users) > 0){
-
-      $row = mysqli_fetch_assoc($select_users);
-
-      if($row['user_type'] == 'admin'){
-
-         $_SESSION['admin_name'] = $row['name'];
-         $_SESSION['admin_email'] = $row['email'];
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:admin_home.php');
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         $_SESSION['user_email'] = $row['email'];
-         $_SESSION['user_id'] = $row['id'];
-         header('location:home.php');
-
-      }
-
-   }else{
-      $message[] = 'Incorrect email or password!';
-   }
-
-}
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Login</title>
-   <link rel="stylesheet" href="resources/css/login.css">
-</head>
-<body>
-
-   <div class="background-image"></div>
-
-   <?php
-      if(isset($message)){
-         foreach($message as $message){
-            echo '
-            <div class="message">
-               <span>'.$message.'</span>
-               <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-            </div>
-            ';
-         }
-      }
-      ?>
-
-   <!-- Login Form -->
-   <div class="form-container">
-      <form id="login-form">
-         <h3>Log In</h3>
-         <input type="email" id="login-email" placeholder="Enter Your Email" required>
-         <input type="password" id="login-password" placeholder="Enter Your Password" required>
-         <button type="submit">Login</button>
-         <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-      </form>
-   </div>
-
-   <script src="login.js"></script>
-</body>
-</html>
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>Login | By Code Info</title>
+        <link rel="stylesheet" href="loginorsignup.css" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <style>
+            body{
+                background-image: url(login.jpg);
+            }
+        </style>
+        <div class="login-box">
+          <h1>Login</h1>
+          <form>
+            <label>Email</label>
+            <input type="email" placeholder="" />
+            <label>Password</label>
+            <input type="password" placeholder="" />
+            <input type="button" value="Submit" />
+          </form>
+        </div>
+        <p class="para-2">
+          Not have an account? <a href="signup.html">Sign Up Here</a>
+        </p>
+      </body>
+    </html></span>
