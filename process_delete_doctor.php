@@ -16,14 +16,19 @@
 </div>
 
 <!-- Form to enter Email and Registration Number -->
-<div class="wrapper">
-    <div>
+<div>
+    <div class="wrapper">
+        <h1>Delete Doctor</h1>
         <form method="post" action="">
-            <label for="email">User Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="reg_no">Doctor Registration Number:</label>
-            <input type="text" id="reg_no" name="reg_no" required>
-            <input type="submit" name="search" value="Search">
+            <div class="input-box">
+                <label for="email">User Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+                <label for="reg_no">Doctor Registration Number:</label>
+                <input type="text" id="reg_no" name="reg_no" required>
+            </div>
+            <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
 
