@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Feedback Form Page</title>
+   <link rel="stylesheet" href="feed.css">
+</head>
+<body>
+
+   <div class="background-image"></div>
+
+   <!-- Feedback Form -->
+   <div class="form-section">
+      <div>
+         <h1>Your Feedback Is Important For Us</h1>
+         <form id="feedback-form" class="form-content-section" method="post" action="submit_feedback.php">
+            <div class="form-group">
+               <label for="exampleInputText">Name</label>
+               <input type="text" class="form-control" id="exampleInputText" name="name" placeholder="Enter Your Name" required>
+            </div>
+            <div class="form-group">
+               <label for="exampleInputEmail1">Email address</label>
+               <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email" required>
+               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+               <label for="exampleInputContact">Contact Number (optional)</label>
+               <input type="text" class="form-control" id="exampleInputContact" name="contact_number" placeholder="Enter your contact number">
+            </div>
+            <div class="form-group">
+               <label for="exampleFormControlTextarea1">Feedback</label>
+               <textarea class="form-control" id="exampleFormControlTextarea1" name="feedback" rows="5" placeholder="Enter your feedback" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+         </form>
+      </div>
+   </div>
+
+</body>
+</html>
