@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->send();
         echo "OTP sent to your email.";
-        echo "<script>alert('OTP sent. Please check your email.'); window.location.href='otp_verification.php';</script>";
+        echo "<script>alert('OTP sent. Please check your email.'); window.location.href='otp_verification.html';</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
