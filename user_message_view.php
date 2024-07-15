@@ -60,8 +60,8 @@ $result = $conn->query($sql);
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.php" method="get">
-        <button type="submit" class="btn">Go to Admin Dashboard</button>
+    <form action="admin_dashboard.html" method="get">
+        <button type="submit" class="btn"> Go to Admin Dashboard</button>
     </form>
 
 </body>
