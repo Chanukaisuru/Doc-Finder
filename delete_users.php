@@ -27,7 +27,7 @@
             <div class="input-box">
                 <label for="nic">Patient NIC:</label>
                 <input type="text" id="nic" name="nic" required>
-            </div>
+            </div><br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
