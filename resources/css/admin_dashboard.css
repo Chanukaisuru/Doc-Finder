@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url('../img/doctor_admin.jpg');
+    background-image: url('../img/admin_dashboard.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -90,6 +90,7 @@ html{
 
 h1, p {
     text-align: center;
+    color: black;
 }
 
 p {
