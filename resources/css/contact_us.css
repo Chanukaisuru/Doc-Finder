@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/contact_us.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+.headers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    height: 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.headers .logo {
+    color: var(--black);
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-left: 100px;
+}
+
+.headers .logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.lo {
+    position: fixed;
+    margin-left: -110px;
+    margin-top: -20px;
+}
+
+.container {
+    width: 80%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 85px;
+}
+
+header h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-left: 150px;
+}
+
+.content-form section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-form section h2 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.content-form section p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 500px;
+}
+
+.contact-form {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.contact-form input[type="text"], 
+.contact-form input[type="email"], 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid #333;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: lightskyblue;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contact-form span {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #333;
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.contact-form input:focus + span,
+.contact-form input:valid + span,
+.contact-form textarea:focus + span,
+.contact-form textarea:valid + span {
+    top: -10px;
+    font-size: 12px;
+    color: lightskyblue;
+}
+
+.media {
+    display: flex;
+    margin-left: 750px;
+    margin-top: 20px;
+}
+
+.media li {
+    list-style: none;
+    margin: 0 10px;
+    color: #333;
+}
+
+.empty {
+    height: 50px;
+}
