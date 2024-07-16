@@ -1,74 +1,55 @@
-const btns = [
-    { id: 1, distric: 'Matar' },
-    { id: 2, distric: 'Galle' },
-    { id: 3, distric: 'colombo' },
-    { id: 4, distric: 'Gampaha' },
-    { id: 5, distric: 'Kandy' },
-    { id: 6, distric: 'Hambantota' },
-    { id: 7, distric: 'Kalutara' }
-];
 
-document.getElementById('btns').innerHTML = btns.map(btn => {
-    const { distric, id } = btn;
-    return `<button class='fil-p' onclick='filterItems(${id})'>${distric}</button>`;
-}).join('');
+        const btns = [
+            { id: 1, district: 'Matara' },
+            { id: 2, district: 'Galle' },
+            { id: 3, district: 'Colombo' },
+            { id: 4, district: 'Gampaha' },
+            { id: 5, district: 'Kandy' },
+            { id: 6, district: 'Hambantota' },
+            { id: 7, district: 'Kalutara' }
+        ];
 
-const card = [
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 4 },
-    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Isuru', distric: 'colombo', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 5 },
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Kamal', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 3 },
-    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.C.P.Vidana Pathirana', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 4 },
-    { id: 1, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sarith', distric: 'Matar', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 2 },
-    { id: 3, image: 'resources/img/selectDoctor_image.jpg', Name: 'Sampath', distric: 'colombo', Specile: 'General Practitioner', hospital: 'Distric Genaral Hospital', rating: 5 },
-    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Lokuarachchi', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Privat Medical Center', rating: 5 },
-    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Akalanka Dodamgoda', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Reproductive Health Clinic', rating: 3 },
-    { id: 2, image: 'resources/img/selectDoctor_image.jpg', Name: 'Dr.Ruwan', distric: 'Galle', Specile: 'General Practitioner', hospital: 'Privat Medical Center', rating: 4 },
+        document.getElementById('btns').innerHTML = btns.map(btn => {
+            const { district } = btn;
+            return `<button class='fil-p' onclick='filterItems("${district}")'>${district}</button>`;
+        }).join('');
 
+        let doctors = [];
 
+        const fetchDoctors = () => {
+            fetch('get_doctors.php')
+                .then(response => response.json())
+                .then(data => {
+                    doctors = data;
+                    displayDoctors(doctors);
+                });
+        };
 
-];
-
-const categories = [...new Set(card.map(item => { return item }))];
-
-const filterItems = (a) => {
-    const filterCategories = categories.filter(item => item.id == a);
-    displayItem(filterCategories);
-}
-
-const displayItem = (items) => {
-    document.getElementById('root').innerHTML = items.map((item) => {
-        var { image, Name, distric, Specile, hospital, rating } = item;
-        return (
-            `<div class="card">
-                <div class="card-content">
-                    <div class="image">
-                        <img src=${image} alt="doc image">
-                    </div>
-                </div>
-                <div class="name-profession">
-                    <span class="name">${Name}</span>
-                    <span class="specialty">${Specile}</span>
-                    <span class="hospital">${hospital}</span>
-                    <span class="distric">${distric}</span>
-                </div>
-                <div class="star">
-                    ${generateStars(rating)}
-                </div>
-            </div>`
-        )
-    }).join('');
-}
-
-const generateStars = (rating) => {
-    let stars = '';
-    for (let i = 0; i < 5; i++) {
-        if (i < rating) {
-            stars += '<i class="fa-solid fa-star"></i>';
-        } else {
-            stars += '<i class="fa-regular fa-star"></i>';
+        const filterItems = (district) => {
+            const filteredDoctors = doctors.filter(doctor => doctor.district.toLowerCase() === district.toLowerCase());
+            displayDoctors(filteredDoctors);
         }
-    }
-    return stars;
-}
 
-displayItem(categories);
+        const displayDoctors = (doctors) => {
+            document.getElementById('root').innerHTML = doctors.map(doctor => {
+                const { reg_no, profile_photo, name, district, specialty, hospital } = doctor;
+                return (
+                    `<div class="card" id="doctor-${reg_no}">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="${profile_photo}" alt="Doctor Image">
+                            </div>
+                        </div>
+                        <div class="name-profession">
+                            <span class="name">${name}</span>
+                            <span class="specialty">${specialty}</span>
+                            <span class="hospital">${hospital}</span>
+                            <span class="district">${district}</span>
+                        </div>
+                    </div>`
+                );
+            }).join('');
+        }
+
+        fetchDoctors();
+    
