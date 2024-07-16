@@ -97,7 +97,7 @@ if ($stmt_user->execute()) {
     $stmt_doctor->bind_param("sisssssss", $reg_no, $user_id, $name, $phone_no, $district, $location, $qualification, $specialty, $target_file);
 
     if ($stmt_doctor->execute()) {
-        echo "Doctor registered successfully.";
+        header("Location: admin_dashboard.html");
     } else {
         echo "Error: " . $stmt_doctor->error;
     }
