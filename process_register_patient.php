@@ -2,12 +2,10 @@
 // Include the database connection file
 include 'database.php';
 
-
 // Get form data
 $email = $_POST['email'];
 $password = $_POST['password'];
 $confirm_password = $_POST['confirm_password'];
-
 $nic = $_POST['nic'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -60,7 +58,7 @@ if ($stmt_user->execute()) {
     $stmt_check_nic->close();
 
     // Insert into patients table
-    $sql_patient = "INSERT INTO patients (nic, user_id, first_name, last_name, age, phone_no, address, province, sick) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_patient = "INSERT INTO patients (nic, user_id, first_name, last_name, age, phone_no, address, district, sick) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt_patient = $conn->prepare($sql_patient);
     $stmt_patient->bind_param("sisssssss", $nic, $user_id, $first_name, $last_name, $age, $phone_no, $address, $province, $sick);
 
