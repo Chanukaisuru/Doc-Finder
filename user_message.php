@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 
 <body>
     <div class="headers">
-        <a href="#" class="logo">
+        <a href="home.html" class="logo">
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
             </div> DOC FINDER

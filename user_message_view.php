@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 
 <body>
     <div class="headers">
-        <a href="#" class="logo">
+        <a href="home.html" class="logo">
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
             </div> DOC FINDER
@@ -60,8 +60,8 @@ $result = $conn->query($sql);
     </section>
 
     <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.php" method="get">
-        <button type="submit" class="btn">Go to Admin Dashboard</button>
+    <form action="admin_dashboard.html" method="get">
+        <button type="submit" class="btn"> Go to Admin Dashboard</button>
     </form>
 
 </body>
