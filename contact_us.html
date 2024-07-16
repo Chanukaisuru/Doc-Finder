@@ -46,20 +46,20 @@
             </div>
         </div>
 
-        <form>
+        <form action="user_message.php" method="post">
             <div class="form">
                 <div class="contact-form">
-                    <input type="text" required>
+                    <input type="text" name="full_name" required>
                     <span>Full Name</span>
                 </div>
 
                 <div class="contact-form">
-                    <input type="email" required>
-                    <span>Email Id</span>
+                    <input type="email" name="email" required>
+                    <span>Email </span>
                 </div>
 
                 <div class="contact-form">
-                    <textarea required></textarea>
+                    <textarea name="message_details" required></textarea>
                     <span>Type your Message...</span>
                 </div>
 
