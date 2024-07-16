@@ -4,8 +4,6 @@ include 'database.php';
 
 // Get form data
 $email = $_POST['email'];
-$password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
 $reg_no = $_POST['reg_no'];
 $name = $_POST['name'];
 $phone_no = $_POST['phone_no'];
@@ -14,13 +12,7 @@ $location = $_POST['location'];
 $qualification = $_POST['qualification'];
 $specialty = $_POST['specialty'];
 
-// Validate passwords
-if ($password !== $confirm_password) {
-    die("Passwords do not match.");
-}
 
-// Hash the password
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Check if email already exists in the users table
 $sql_check_email = "SELECT email FROM users WHERE email = ?";
