@@ -121,3 +121,8 @@ html{
     font-weight: 600;
     margin-top: 20px;
 }
+
+.sr p{
+    color: black;
+    font-size: 20;
+}
