@@ -72,6 +72,13 @@ html{
     text-align: center;
 }
 
+.wrapper p {
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
 .wrapper .input-box {
     position: relative;
     width: 100%;
