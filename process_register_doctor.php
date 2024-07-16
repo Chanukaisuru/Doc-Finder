@@ -8,11 +8,10 @@ $reg_no = $_POST['reg_no'];
 $name = $_POST['name'];
 $phone_no = $_POST['phone_no'];
 $district = $_POST['district'];
+$hospital = $_POST['hospital'];
 $location = $_POST['location'];
 $qualification = $_POST['qualification'];
 $specialty = $_POST['specialty'];
-
-
 
 // Check if email already exists in the users table
 $sql_check_email = "SELECT email FROM users WHERE email = ?";
@@ -69,24 +68,24 @@ if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] == 0) {
 
     // Attempt to move the uploaded file
     if (!move_uploaded_file($profile_photo["tmp_name"], $target_file)) {
-        die("Sorry, there was an error uploading your file. Error code: " . $profile_photo["error"]);
+        die("Sorry, there was an error uploading your file.");
     }
 } else {
-    die("No file was uploaded or there was an error uploading the file. Error code: " . $_FILES['profile_photo']['error']);
+    die("No file was uploaded or there was an error uploading the file.");
 }
 
 // Insert into users table
-$sql_user = "INSERT INTO users (email, user_name, password, role_no, created_at) VALUES (?, ?, ?, 2, NOW())";
+$sql_user = "INSERT INTO users (email, user_name, role_no, created_at) VALUES (?, ?, 2, NOW())";
 $stmt_user = $conn->prepare($sql_user);
-$stmt_user->bind_param("sss", $email, $name, $hashed_password);
+$stmt_user->bind_param("ss", $email, $name);
 
 if ($stmt_user->execute()) {
     $user_id = $stmt_user->insert_id;
 
     // Insert into doctors table
-    $sql_doctor = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_doctor = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, hospital, location, qualification, specialty, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt_doctor = $conn->prepare($sql_doctor);
-    $stmt_doctor->bind_param("sisssssss", $reg_no, $user_id, $name, $phone_no, $district, $location, $qualification, $specialty, $target_file);
+    $stmt_doctor->bind_param("sissssssss", $reg_no, $user_id, $name, $phone_no, $district, $hospital, $location, $qualification, $specialty, $target_file);
 
     if ($stmt_doctor->execute()) {
         header("Location: admin_dashboard.html");
