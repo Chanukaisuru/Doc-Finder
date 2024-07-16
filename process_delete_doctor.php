@@ -63,6 +63,7 @@
                     // Fetch and display the doctor's details
                     $doctor = $result->fetch_assoc();
                     ?>
+                    <div class="sr"> 
                     <h2>Doctor Details</h2>
                     <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
@@ -70,14 +71,14 @@
                     <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
                     <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
                     <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
-                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
+                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p> 
                     
                     <?php if (!empty($doctor['profile_photo'])): ?>
                         <p><strong>Profile Photo:</strong></p>
                         <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
                     <?php else: ?>
                         <p><strong>Profile Photo:</strong> No photo available.</p>
-                    <?php endif; ?>
+                    <?php endif; ?> </div>
 
                     <!-- Form to confirm deletion -->
                     <form method="post" action="">
