@@ -47,7 +47,7 @@
             echo 'Please provide both the user\'s email and patient\'s NIC.';
         } else {
             // Prepare the select statement for the patients table
-            $sql_patients = "SELECT nic, first_name, last_name, age, phone_no, address, province, sick FROM patients WHERE nic = ?";
+            $sql_patients = "SELECT nic, first_name, last_name, age, phone_no, address, district, sick FROM patients WHERE nic = ?";
             $stmt_patients = $conn->prepare($sql_patients);
 
             if (!$stmt_patients) {
@@ -70,7 +70,7 @@
                     <p><strong>Age:</strong> <?php echo htmlspecialchars($patient['age']); ?></p>
                     <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patient['phone_no']); ?></p>
                     <p><strong>Address:</strong> <?php echo htmlspecialchars($patient['address']); ?></p>
-                    <p><strong>Province:</strong> <?php echo htmlspecialchars($patient['province']); ?></p>
+                    <p><strong>District:</strong> <?php echo htmlspecialchars($patient['district']); ?></p>
                     <p><strong>Sick:</strong> <?php echo htmlspecialchars($patient['sick']); ?></p>
 
                     <!-- Form to confirm deletion -->

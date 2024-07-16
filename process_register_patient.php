@@ -2,12 +2,8 @@
 // Include the database connection file
 include 'database.php';
 
-
 // Get form data
 $email = $_POST['email'];
-$password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
-
 $nic = $_POST['nic'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -16,14 +12,6 @@ $phone_no = $_POST['phone_no'];
 $address = $_POST['address'];
 $province = $_POST['province'];
 $sick = $_POST['sick'];
-
-// Validate passwords
-if ($password !== $confirm_password) {
-    die("Passwords do not match.");
-}
-
-// Hash the password
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Check if email already exists in the users table
 $sql_check_email = "SELECT user_id FROM users WHERE email = ?";
@@ -39,9 +27,9 @@ if ($result_check_email->num_rows > 0) {
 $stmt_check_email->close();
 
 // Insert into users table
-$sql_user = "INSERT INTO users (email, user_name, password, role_no, created_at) VALUES (?, ?, ?, 3, NOW())";
+$sql_user = "INSERT INTO users (email, user_name, role_no, created_at) VALUES (?, ?, 3, NOW())";
 $stmt_user = $conn->prepare($sql_user);
-$stmt_user->bind_param("sss", $email, $first_name, $hashed_password);
+$stmt_user->bind_param("ss", $email, $first_name);
 
 if ($stmt_user->execute()) {
     $user_id = $stmt_user->insert_id;
@@ -60,7 +48,7 @@ if ($stmt_user->execute()) {
     $stmt_check_nic->close();
 
     // Insert into patients table
-    $sql_patient = "INSERT INTO patients (nic, user_id, first_name, last_name, age, phone_no, address, province, sick) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_patient = "INSERT INTO patients (nic, user_id, first_name, last_name, age, phone_no, address, district, sick) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt_patient = $conn->prepare($sql_patient);
     $stmt_patient->bind_param("sisssssss", $nic, $user_id, $first_name, $last_name, $age, $phone_no, $address, $province, $sick);
 

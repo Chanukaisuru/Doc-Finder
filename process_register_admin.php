@@ -45,7 +45,7 @@ $stmt_user = $conn->prepare($sql_user);
 $stmt_user->bind_param("ss", $email, $hashed_password);
 
 if ($stmt_user->execute()) {
-    header("Location:unified_login.html");
+    header("Location:login.html");
 } else {
     echo "Error: " . $stmt_user->error;
 }

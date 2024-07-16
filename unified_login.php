@@ -42,12 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Redirect based on role
     if ($user['role_no'] == 1) {
         header("Location: admin_dashboard.html");
-    } elseif ($user['role_no'] == 2) {
-        header("Location: patient_dashboard.php");
-    } elseif ($user['role_no'] == 3) {
-        header("Location: patient_dashboard.php");
-    } else {
-        die('Invalid role.');
+    
     }
     exit();
 }

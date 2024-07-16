@@ -2,66 +2,23 @@
 // Include the database connection file
 include 'database.php';
 
-// Fetch messages from the database
-$sql = "SELECT full_name, email, message_details FROM messages ORDER BY created_at DESC";
-$result = $conn->query($sql);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $message_details = $_POST['message_details'];
+
+    $stmt = $conn->prepare("INSERT INTO messages (full_name, email, message_details) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $full_name, $email, $message_details);
+
+    if ($stmt->execute()) {
+        header("Location: home.html");
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Message</title>
-    <link rel="stylesheet" href="resources/css/user_message.css">
-</head>
-
-<body>
-    <div class="headers">
-        <a href="#" class="logo">
-            <div class="lo">
-                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div> DOC FINDER
-        </a>
-    </div>
-
-    <section id="message-section" class="wrapper">
-        <h1>User Message</h1>
-        <div class="content-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Message Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>
-                                    <td>{$row['full_name']}</td>
-                                    <td>{$row['email']}</td>
-                                    <td>{$row['message_details']}</td>
-                                  </tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='3'>No messages found</td></tr>";
-                    }
-                    $conn->close();
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Form to redirect to admin dashboard -->
-    <form action="admin_dashboard.html" method="get">
-        <button type="submit" class="btn">Go to Admin Dashboard</button>
-    </form>
-
-</body>
-
-</html>

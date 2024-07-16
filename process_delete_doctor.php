@@ -47,7 +47,7 @@
             echo 'Please provide both the user\'s email and doctor\'s registration number.';
         } else {
             // Prepare the select statement for the doctors table
-            $sql_doctors = "SELECT reg_no, first_name, last_name, phone_no, province, qualification, specialty FROM doctors WHERE reg_no = ?";
+            $sql_doctors = "SELECT reg_no, name, phone_no, district, location, qualification, specialty, profile_photo FROM doctors WHERE reg_no = ?";
             $stmt_doctors = $conn->prepare($sql_doctors);
 
             if (!$stmt_doctors) {
@@ -65,12 +65,19 @@
                     ?>
                     <h2>Doctor Details</h2>
                     <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
-                    <p><strong>First Name:</strong> <?php echo htmlspecialchars($doctor['first_name']); ?></p>
-                    <p><strong>Last Name:</strong> <?php echo htmlspecialchars($doctor['last_name']); ?></p>
+                    <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
                     <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($doctor['phone_no']); ?></p>
-                    <p><strong>Province:</strong> <?php echo htmlspecialchars($doctor['province']); ?></p>
+                    <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
+                    <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
                     <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
                     <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
+                    
+                    <?php if (!empty($doctor['profile_photo'])): ?>
+                        <p><strong>Profile Photo:</strong></p>
+                        <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
+                    <?php else: ?>
+                        <p><strong>Profile Photo:</strong> No photo available.</p>
+                    <?php endif; ?>
 
                     <!-- Form to confirm deletion -->
                     <form method="post" action="">
