@@ -1,5 +1,5 @@
 <?php
-// Database connection details
+// Database connection 
 include 'database.php';
 
 // Fetch feedbacks
@@ -42,7 +42,7 @@ $result = $conn->query($sql);
                 <tbody>
                     <?php
                     if ($result->num_rows > 0) {
-                        // Output data of each row
+                        // Output data
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>
                                     <td>" . htmlspecialchars($row['name']) . "</td>
@@ -61,7 +61,7 @@ $result = $conn->query($sql);
         </div>
     </section>
 
-    <!-- Form to redirect to admin dashboard -->
+    
     <form action="admin_dashboard.html" method="get">
         <button type="submit" class="btn">Go to Admin Dashboard</button>
     </form>

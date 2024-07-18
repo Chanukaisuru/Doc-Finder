@@ -15,7 +15,6 @@
     </a>
 </div>
 
-<!-- Form to enter Email and NIC -->
 <div>
     <div class="wrapper">
         <h1>Delete User</h1>
@@ -87,7 +86,7 @@
                 echo 'Error: ' . $stmt_patients->error;
             }
 
-            // Close the statement
+        
             $stmt_patients->close();
         }
     }
@@ -143,7 +142,7 @@
             echo 'Error: ' . $e->getMessage();
         }
 
-        // Close the statements and connection
+    
         if (isset($stmt_users)) {
             $stmt_users->close();
         }
