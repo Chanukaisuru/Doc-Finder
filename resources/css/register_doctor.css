@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ body{
     background-position: center;
 }
 
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
@@ -27,9 +27,11 @@ html{
 
 .headers {
     position: fixed;
-    top:0; left: 0; right:0;
-    background:rgba(255, 255, 255, 0.7);
-    padding:1rem 7%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,20 +39,22 @@ html{
     box-shadow: var(--box-shadow);
     height: 70px;
 }
-.headers .logo{
-    color:var(--black);
+
+.headers .logo {
+    color: var(--black);
     font-size: 2rem;
     font-weight: bolder;
     margin-left: 100px;
 }
-.headers .logo img{ 
+
+.headers .logo img {
     width: 50px;
     height: 50px;
 }
 
-.lo{
+.lo {
     position: fixed;
-    margin-left:-110px;
+    margin-left: -110px;
     margin-top: -20px;
 }
 
@@ -77,8 +81,6 @@ html{
     text-align: center;
 }
 
-
-
 .wrapper .input-box {
     position: relative;
     width: 100%;
@@ -88,7 +90,8 @@ html{
     font-size: 16px;
 }
 
-.input-box input {
+.input-box input,
+.input-box select {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -98,13 +101,25 @@ html{
     border-radius: 40px;
     font-size: 16px;
     color: black;
-    padding: 20px 45px 20px 20px;
+    padding: 0 20px;
     border-color: black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.input-box select {
+    padding-right: 40px; /* To make space for the arrow */
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658a1 1 0 0 1 .806-1.658h9.486a1 1 0 0 1 .806 1.658l-4.796 5.482a1 1 0 0 1-1.512 0z"/></svg>') no-repeat right 15px center;
+    background-size: 15px;
+}
+
+.input-box select::-ms-expand {
+    display: none;
 }
 
 .input-box input::placeholder {
-    color: #fff
-
+    color: #fff;
 }
 
 .input-box i {
