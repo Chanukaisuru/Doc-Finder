@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dentist</title>
-    <link rel="stylesheet" href="resources/css/select_doctor.css">
+    <title>Dermatologist</title>
+    <link rel="stylesheet" href="resources/css/select_doctor.css?v=1.0"> <!-- Added cache busting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -17,16 +17,17 @@
         </div>
         <div class="content">
             <div class="header">
-                <p>Dentist</p>
+                <p>Dermatologist</p>
             </div>
             <div id="root"></div>
         </div>
     </div>
 
-    <script src="resources/js/select_doctor.js"></script>
+    <script src="resources/js/select_doctor.js?v=1.0"></script> <!-- Added cache busting -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetchDoctors('Dentist');
+            generateDistrictButtons();
+            fetchDoctors('Dermatologist');
         });
     </script>
 </body>
