@@ -24,5 +24,11 @@
     </div>
 
     <script src="resources/js/select_doctor.js?v=1.0"></script> <!-- Added cache busting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            generateDistrictButtons();
+            fetchDoctors('General Practitioner');
+        });
+    </script>
 </body>
 </html>

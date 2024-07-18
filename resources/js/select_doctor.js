@@ -8,15 +8,22 @@ const btns = [
     { id: 7, district: 'Kalutara' }
 ];
 
-document.getElementById('btns').innerHTML = btns.map(btn => {
-    const { district } = btn;
-    return `<button class='fil-p' onclick='filterItems("${district}")'>${district}</button>`;
-}).join('');
+const generateDistrictButtons = () => {
+    document.getElementById('btns').innerHTML = btns.map(btn => {
+        const { district } = btn;
+        return `<button class='fil-p' onclick='filterItems("${district}")'>${district}</button>`;
+    }).join('');
+};
 
 let doctors = [];
 
-const fetchDoctors = () => {
-    fetch('get_general_practitioners.php')
+const fetchDoctors = (specialty = '') => {
+    let url = 'get_doctors.php';
+    if (specialty) {
+        url += `?specialty=${encodeURIComponent(specialty)}`;
+    }
+    
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             doctors = data;
@@ -49,5 +56,3 @@ const displayDoctors = (doctors) => {
         );
     }).join('');
 };
-
-fetchDoctors();
