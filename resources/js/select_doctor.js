@@ -16,7 +16,7 @@ document.getElementById('btns').innerHTML = btns.map(btn => {
 let doctors = [];
 
 const fetchDoctors = () => {
-    fetch('get_doctors.php')
+    fetch('get_general_practitioners.php')
         .then(response => response.json())
         .then(data => {
             doctors = data;
