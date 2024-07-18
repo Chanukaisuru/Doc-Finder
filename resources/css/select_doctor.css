@@ -1,52 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-    
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Change to 100vh to fit the viewport height */
+    background-image: url('../img/register_doctor.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(1.2);
+    overflow-y: scroll; /* Allow vertical scrolling */
 }
 
 .container {
     display: flex;
-    margin: 15px 15px 15px;
-    
-    
+    margin: 15px;
 }
 
 .sidebar {
     width: 25%;
     height: 100vh;
-    background-color: #d2ebf0;
-    position: fixed; 
-    border-radius: 8px;  
-
+    position: fixed;
+    border-radius: 8px;
+    background: rgba(43, 38, 38, 0.274);
+    border: 2px solid rgba(44, 135, 240, 0.2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #fff;
     
 }
 
-.distric_filter {
-    margin-top: 50px;
-    padding: 30px 40px;    
+.district_filter {
+    margin-top: 10px;
+    padding: 20px 40px;
 }
 
-.distric_filter h3 {
-    margin: 30px 30px;
+.district_filter h3 {
+    margin: 30px;
     color: #0e31cc;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-      
 }
 
 .fil-p {
     padding: 15px 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     margin: 7px 10px;
     cursor: pointer;
-    color: #333;
-    text-align: justify;
-    width: 100px; /* Ensure button takes full width */
-   
+    color: #080707;
+    text-align: center;
+    width: 100px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 .fil-p:hover {
@@ -54,22 +65,11 @@
     background-color: #aaa;
 }
 
-button {
-    width:100px;
-    position: relative;
-    border: none;
-    border-radius: 5px;
-    background-color: #aaa;
-    padding: 7px 25px;
-    cursor: pointer;
-    color: rgb(97, 68, 15);
-  
-    
-}
 .content {
     width: 75%;
     position: absolute;
     right: 0;
+    padding-bottom: 50px; /* Add padding to prevent content from overlapping with the bottom */
 }
 
 .header {
@@ -78,12 +78,12 @@ button {
     align-items: center;
     justify-content: center;
     height: 10vh;
-    border-bottom: 1px solid #eee;
-    color: #383838;
-    background-color: #d2ebf0;
     border-radius: 8px;
-    position: sticky;
-    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(24, 11, 209, 0.2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(30%);
 }
 
 .header p {
@@ -92,24 +92,24 @@ button {
     color: #0e31cc;
 }
 
-#root{
+#root {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap:20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
     padding: 30px;
     
 }
 
-.card .image{
+.card .image {
     height: 140px;
     width: 140px;
     border-radius: 50%;
     padding: 3px;
-    background: blue;
+    background: rgb(48, 144, 223);
 }
 
-.card .image img{
+.card .image img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -117,24 +117,26 @@ button {
     border: 3px solid #fff;
 }
 
-.card{
+.card {
     position: relative;
     background: #d2ebf0;
     border-radius: 20px;
-    margin: 20px 0 ;
+    margin: 20px 0;
     width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     
 }
 
-.card::before{
+.card::before {
     content: "";
     position: absolute;
     height: 40%;
     width: 100%;
-    background: blue;
+    background: rgb(71, 95, 230);
     border-radius: 20px 20px 0 0;
 }
-.card .card-content{
+
+.card .card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -142,32 +144,32 @@ button {
     position: relative;
     z-index: 100;
 }
-.card .name-profession{
+
+.card .name-profession {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
     color: #333;
-
 }
 
-.name{
+.name {
     margin-top: -30px;
     font-size: 20px;
     font-weight: 600;
     color: blue;
 }
 
-.specialty{
+.specialty {
     font-size: 20px;
     font-weight: bold;
 }
 
-.hospital,.distric{
+.hospital, .district {
     font-weight: bold;
 }
 
-.star{
+.star {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,7 +177,7 @@ button {
     margin-bottom: 10px;
 }
 
-.star i{
+.star i {
     font-size: 18px;
     margin: 0 2px;
     color: blue;
