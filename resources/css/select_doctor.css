@@ -42,7 +42,7 @@ body {
 
 .district_filter h3 {
     margin: 30px;
-    color: #0e31cc;
+    color: #040b2e;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
 }
@@ -119,7 +119,7 @@ body {
 
 .card {
     position: relative;
-    background: #d2ebf0;
+    background: #a8abac;
     border-radius: 20px;
     margin: 20px 0;
     width: 300px;
