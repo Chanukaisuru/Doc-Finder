@@ -21,7 +21,7 @@
         <h1>Delete Doctor</h1>
         <form method="post" action="">
             <div class="input-box">
-                <label for="email">User Email:</label>
+                <label for="email">Doctor's Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="input-box">
