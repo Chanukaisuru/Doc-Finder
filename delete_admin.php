@@ -68,6 +68,10 @@
                     <!-- Form to confirm deletion -->
                     <form method="post" action="">
                         <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                        <div class="input-box">
+                            <label for="password">Admin's Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
                         <input type="submit" name="delete" value="Delete Admin">
                     </form>
                     <?php
@@ -87,28 +91,60 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
         // Get form data
         $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        // Prepare the delete statement for the users table
-        $sql_admin = "DELETE FROM users WHERE email = ? AND role_no = 1";
-        $stmt_admin = $conn->prepare($sql_admin);
+        // Prepare the select statement to get the hashed password
+        $sql_password = "SELECT password FROM users WHERE email = ? AND role_no = 1";
+        $stmt_password = $conn->prepare($sql_password);
 
-        if (!$stmt_admin) {
+        if (!$stmt_password) {
             die('Prepare failed: ' . $conn->error);
         }
 
-        $stmt_admin->bind_param("s", $email);
+        $stmt_password->bind_param("s", $email);
 
-        // Execute the statement and check if any row was affected
-        if ($stmt_admin->execute() && $stmt_admin->affected_rows > 0) {
-            // Redirect to the admin dashboard with a success message
-            header("Location: admin_dashboard.html");
-            exit();
+        if ($stmt_password->execute()) {
+            $result = $stmt_password->get_result();
+
+            if ($result->num_rows > 0) {
+                $admin = $result->fetch_assoc();
+                $hashed_password = $admin['password'];
+
+                // Verify the password
+                if (password_verify($password, $hashed_password)) {
+                    // Prepare the delete statement for the users table
+                    $sql_admin = "DELETE FROM users WHERE email = ? AND role_no = 1";
+                    $stmt_admin = $conn->prepare($sql_admin);
+
+                    if (!$stmt_admin) {
+                        die('Prepare failed: ' . $conn->error);
+                    }
+
+                    $stmt_admin->bind_param("s", $email);
+
+                    // Execute the statement and check if any row was affected
+                    if ($stmt_admin->execute() && $stmt_admin->affected_rows > 0) {
+                        // Redirect to the admin dashboard with a success message
+                        header("Location: admin_dashboard.html");
+                        exit();
+                    } else {
+                        echo 'No admin found with that email.';
+                    }
+
+                    // Close the statement and connection
+                    $stmt_admin->close();
+                } else {
+                    echo 'Incorrect password.';
+                }
+            } else {
+                echo 'No admin found with that email.';
+            }
         } else {
-            echo 'No admin found with that email.';
+            echo 'Error: ' . $stmt_password->error;
         }
 
         // Close the statement and connection
-        $stmt_admin->close();
+        $stmt_password->close();
         $conn->close();
     }
     ?>
