@@ -47,7 +47,7 @@
             echo 'Please provide both the user\'s email and doctor\'s registration number.';
         } else {
             // Prepare the select statement for the doctors table
-            $sql_doctors = "SELECT reg_no, name, phone_no, district, location, qualification, specialty, profile_photo FROM doctors WHERE reg_no = ?";
+            $sql_doctors = "SELECT reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address FROM doctors WHERE reg_no = ?";
             $stmt_doctors = $conn->prepare($sql_doctors);
 
             if (!$stmt_doctors) {
@@ -63,7 +63,7 @@
                     // Fetch and display the doctor's details
                     $doctor = $result->fetch_assoc();
                     ?>
-                    <div class="sr"> 
+                    <div class="sr">
                     <h2>Doctor Details</h2>
                     <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
@@ -71,8 +71,10 @@
                     <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
                     <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
                     <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
-                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p> 
-                    
+                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
+                    <p><strong>Hospital:</strong> <?php echo htmlspecialchars($doctor['hospital']); ?></p>
+                    <p><strong>Address:</strong> <?php echo htmlspecialchars($doctor['address']); ?></p>
+
                     <?php if (!empty($doctor['profile_photo'])): ?>
                         <p><strong>Profile Photo:</strong></p>
                         <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
@@ -84,6 +86,7 @@
                     <form method="post" action="">
                         <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
                         <input type="hidden" name="reg_no" value="<?php echo htmlspecialchars($reg_no); ?>">
+                        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($doctor['user_id']); ?>">
                         <input type="submit" name="delete" value="Delete Doctor">
                     </form>
                     <?php
@@ -104,6 +107,7 @@
         // Get form data
         $email = $_POST['email'];
         $reg_no = $_POST['reg_no'];
+        $user_id = $_POST['user_id'];
 
         // Start a transaction
         $conn->begin_transaction();
@@ -122,14 +126,14 @@
             // Execute the statement and check if any row was affected
             if ($stmt_doctors->execute() && $stmt_doctors->affected_rows > 0) {
                 // Prepare the delete statement for the users table
-                $sql_users = "DELETE FROM users WHERE email = ?";
+                $sql_users = "DELETE FROM users WHERE user_id = ?";
                 $stmt_users = $conn->prepare($sql_users);
 
                 if (!$stmt_users) {
                     throw new Exception('Prepare failed: ' . $conn->error);
                 }
 
-                $stmt_users->bind_param("s", $email);
+                $stmt_users->bind_param("i", $user_id);
 
                 // Execute the statement and check if any row was affected
                 if ($stmt_users->execute() && $stmt_users->affected_rows > 0) {
@@ -139,7 +143,7 @@
                     header("Location: admin_dashboard.html");
                     exit();
                 } else {
-                    throw new Exception('No user found with that email.');
+                    throw new Exception('No user found with that user ID.');
                 }
             } else {
                 throw new Exception('No doctor found with that registration number.');

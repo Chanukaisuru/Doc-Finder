@@ -4,7 +4,7 @@
     <title>Delete Admin</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" href="resources/css/delete_admin.css">
+    <link rel="stylesheet" href="resources/css/delete_doctor.css">
 </head>
 <body>
 <div class="headers">
