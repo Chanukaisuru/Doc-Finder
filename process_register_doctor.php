@@ -21,7 +21,10 @@ $stmt_check_email->execute();
 $result_check_email = $stmt_check_email->get_result();
 
 if ($result_check_email->num_rows > 0) {
-    die("Email already registered.");
+    //die("Email already registered.");
+    echo '<script>
+    document.getElementById("error-message").innerText = "Email already registered.";
+</script>';
 }
 
 $stmt_check_email->close();
