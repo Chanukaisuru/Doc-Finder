@@ -40,7 +40,7 @@ const displayDoctors = (doctors) => {
     document.getElementById('root').innerHTML = doctors.map(doctor => {
         const { reg_no, profile_photo, name, district, specialty, hospital } = doctor;
         return (
-            `<div class="card" id="doctor-${reg_no}">
+            `<div class="card" id="doctor-${reg_no}" onclick="window.location.href='Doc-information.php?reg_no=${reg_no}'">
                 <div class="card-content">
                     <div class="image">
                         <img src="${profile_photo}" alt="Doctor Image">
