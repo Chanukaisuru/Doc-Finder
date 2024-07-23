@@ -24,7 +24,7 @@ body {
 
 .sidebar {
     width: 25%;
-    height: 100vh;
+    height: 200vh;
     position: fixed;
     border-radius: 8px;
     background: #ebeef1;
@@ -32,8 +32,7 @@ body {
     backdrop-filter: blur(50px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     color: #fff;
-
-    justify-content: center;
+    align-items: center;
     
     
 }
@@ -68,10 +67,10 @@ body {
 
 .fil-p{
      font-size: 15px;
-     font-weight: 500;
+     font-weight: 600;
      padding: 20px;
      margin: 10px;
-     width: 120px;
+     width: 170px;
      height: 60px;
      background:lightskyblue;
      cursor: pointer;
@@ -79,6 +78,7 @@ body {
      border-radius: 15px;
      color: #040b2e;
      box-shadow:  10px 10px 10px -1px rgba(0, 0, 0, 0.199), -10px -10px 10px -1px rgb(221, 220, 220);
+     margin-left: 50px;
 }
 
 .fil-p:hover {
@@ -103,17 +103,19 @@ body {
     justify-content: center;
     height: 13vh;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(24, 11, 209, 0.2);
+    background: rgb(255, 255, 255);
+    border: 2px solid rgba(248, 248, 248, 0.966);
     backdrop-filter: blur(50px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    filter: brightness(30%);
+
+   
 }
 
 .header p {
     font-size: 50px;
     font-weight: bold;
-    color: #0e31cc;
+    color: #000000;
+    margin-top: 10px;
    
 }
 
@@ -123,7 +125,8 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     padding: 30px;
-    margin-left: 20px
+    margin-left: 20px;
+   
     
 }
 
@@ -132,7 +135,7 @@ body {
     width: 140px;
     border-radius: 50%;
     padding: 3px;
-    background: rgb(48, 144, 223);
+    background: rgb(71, 95, 230);;
 }
 
 .card .image img {
@@ -151,6 +154,7 @@ body {
     width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     height: 300px;
+    cursor: pointer;
     
     
 }
