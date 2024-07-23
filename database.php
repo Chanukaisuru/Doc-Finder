@@ -5,7 +5,7 @@ $dbname = "doc_finder";
 $username = "root";
 $password = "";
 
-// Create a new MySQLi connection
+// Create a connection
 $conn = new mysqli($host, $username, $password, $dbname);
 
 // Check if the connection was successful
