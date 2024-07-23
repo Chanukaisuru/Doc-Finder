@@ -69,7 +69,7 @@
                     <form method="post" action="">
                         <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
                         <div class="input-box">
-                            <label for="password">Admin's Password:</label>
+                            <label for="password"> Admin's Password:</label>
                             <input type="password" id="password" name="password" required>
                         </div>
                         <input type="submit" name="delete" value="Delete Admin">
