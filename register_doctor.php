@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Registration</title>
     <link rel="stylesheet" href="resources/css/register_doctor.css">
+    <style>
+        .message-box .error {
+            color: red;
+        }
+        .message-box .success {
+            color: green;
+        }
+    </style>
 </head>
 <body>
     <div class="headers">
@@ -16,11 +24,31 @@
     </div>
     <div class="wrapper">
         <h1>Doctor Registration</h1>
+
+        <!-- Display messages -->
+        <div class="message-box">
+            <?php
+            // Start session
+            session_start();
+
+            // Display error message if any
+            if (!empty($_SESSION['error_message'])) {
+                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                $_SESSION['error_message'] = ''; // Clear the message after displaying
+            }
+
+            // Display success message if any
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; // Clear the message after displaying
+            }
+            ?>
+        </div>
+
         <form action="process_register_doctor.php" method="post" enctype="multipart/form-data">
             <div class="input-box">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required><br><br>
-                
             </div>
             <div class="input-box">
                 <label for="reg_no">Registration Number:</label>
