@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="headers">
-    <a href="#" class="logo">
+    <a href="home.html" class="logo">
         <div class="lo">
             <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
         </div> DOC FINDER
@@ -80,7 +80,7 @@
                         <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
                     <?php else: ?>
                         <p><strong>Profile Photo:</strong> No photo available.</p>
-                    <?php endif; ?> </div>
+                    <?php endif; ?> 
 
                     <!-- Form to confirm deletion -->
                     <form method="post" action="">
@@ -163,7 +163,7 @@
         }
         $conn->close();
     }
-    ?>
+    ?></div>
 </div>
 </body>
 </html>

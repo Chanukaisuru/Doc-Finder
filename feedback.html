@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <div class="headers">
+        <a href="home.html" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div> DOC FINDER
+        </a>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Feedback</h1>
+        </header>
+        <div class="content">
+            <div class="content-form">
+                <section>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h2>Address</h2>
+                    <p>
+                        No. 57,<br> 
+                        Dehiwala Road,<br> 
+                        Colombo 15.
+                    </p>
+                </section>
+
+                <section>
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <h2>Phone</h2>
+                    <p>011 5782461</p>
+                </section>
+
+                <section>
+                    <i class="fa-solid fa-envelope"></i>
+                    <h2>Email</h2>
+                    <p>docfinder2001@gmail.com</p>
+                </section>
+            </div>
+        </div>
+
+        <form action="user_message.php" method="post">
+            <div class="form">
+                <div class="contact-form">
+                    <input type="text" name="full_name" required>
+                    <span>Full Name</span>
+                </div>
+
+                <div class="contact-form">
+                    <input type="email" name="email" required>
+                    <span>Email </span>
+                </div>
+
+                <div class="contact-form">
+                    <textarea name="message_details" required></textarea>
+                    <span>Type your Message...</span>
+                </div>
+
+                <div class="contact-form">
+                    <input type="submit" name="submit" value="Send">
+                </div>
+            </div>
+        </form>
+
+        <div class="media">
+            <li><i class="fa-brands fa-facebook"></i></li>
+            <li><i class="fa-brands fa-instagram"></i></i></li>
+            <li><i class="fa-brands fa-whatsapp"></i></li>
+            <li><i class="fa-brands fa-twitter"></i></li>
+        </div>
+        <div class="empty"></div>
+    </div>    
+</body>
+</html>
