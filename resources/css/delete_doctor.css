@@ -48,6 +48,26 @@ html{
     height: 50px;
 }
 
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 15px;
+}
+
+.auth-buttons .btn {
+    padding: 15px 25px;
+    background-color: #073560;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background-color: #0056b3;
+}
+
 .lo{
     position: fixed;
     margin-left:-110px;
