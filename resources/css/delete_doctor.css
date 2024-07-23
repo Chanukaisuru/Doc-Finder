@@ -60,7 +60,7 @@ html{
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(50px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: #fff;
+    color: #f2ebeb;
     border-radius: 10px;
     padding: 30px 40px;
     margin-top: 85px;
@@ -130,4 +130,54 @@ html{
 .sr h2{
     color: black;
     font-size: 20px;
+}
+
+.wrapper .input-box1 {
+    position: relative;
+    width: 100%;
+    height: 40px; /* Reduced height */
+    margin: 20px 0; /* Adjusted margin */
+    color: black;
+    font-size: 16px;
+}
+
+.input-box1 input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 20px; /* Reduced border radius */
+    font-size: 14px; /* Reduced font size */
+    color: black;
+    padding: 10px 10px 10px 10px; /* Reduced padding */
+    border-color: black;
+}
+
+.input-box1 input::placeholder {
+    color: #fff;
+}
+
+.input-box1 i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+}
+
+.delete-btn {
+    background-color: lightskyblue !important; 
+    color: rgb(1, 0, 0) !important; 
+    border: none !important;
+    border-radius: 40px !important; 
+    padding: 10px 100px !important; 
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.delete-btn:hover {
+    background-color: rgb(242, 235, 235) !important; 
 }
