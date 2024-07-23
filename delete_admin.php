@@ -24,6 +24,7 @@
                 <label for="email">Admin's Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
+            <br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
@@ -68,12 +69,13 @@
                     <!-- Form to confirm deletion -->
                     <form method="post" action="">
                         <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
-                        <div class="input-box">
-                            <label for="password"> Admin's Password:</label>
+                        <div class="input-box1">
+                            <label for="password"><span style="font-size:16px; color:black; font-weight: bold;">Admin's Password:</span></label>
                             <input type="password" id="password" name="password" required>
                         </div>
-                        <input type="submit" name="delete" value="Delete Admin">
+                        <input type="submit" name="delete" value="Delete Admin" class="delete-btn">
                     </form>
+
                     <?php
                 } else {
                     echo 'No admin found with that email.';
