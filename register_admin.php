@@ -13,6 +13,11 @@
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
             </div> DOC FINDER
         </a>
+
+        <div class="auth-buttons">
+            <a href="home.html" class="btn">Home</a>
+            <a href="admin_dashboard.html" class="btn">Admin dashboard</a>
+        </div>
     </div>
     <div class="wrapper">
         
