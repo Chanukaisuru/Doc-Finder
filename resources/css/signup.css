@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 93vh;
-    background-image: url('../img/register_admin.png');
+    background-image: url('../img/login.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -42,30 +42,11 @@ html{
     font-size: 2rem;
     font-weight: bolder;
     margin-left: 100px;
+
 }
 .headers .logo img{ 
     width: 50px;
     height: 50px;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    font-size: 15px;
-}
-
-.auth-buttons .btn {
-    padding: 15px 25px;
-    background-color: #073560;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.auth-buttons .btn:hover {
-    background-color: #0056b3;
 }
 
 .lo{
@@ -97,6 +78,12 @@ html{
 
 .wrapper h1 {
     font-size: 36px;
+    text-align: center;
+    color: black;
+}
+
+.wrapper p {
+    font-size: 15px;
     text-align: center;
 }
 

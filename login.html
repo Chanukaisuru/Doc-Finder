@@ -4,7 +4,7 @@
         <title>User Login</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-        <link rel="stylesheet" href="resources/css/login_or_signup.css">
+        <link rel="stylesheet" href="resources/css/login.css">
     </head>
     <body>
     <div class="headers">
@@ -12,8 +12,13 @@
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
             </div>
-             <div class = "log"><p>DOC FINDER </p></div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
         </a>
+        <div class="auth-buttons">
+            <a href="home.html" class="btn">Home</a>
+            
+        </div>
     </div>
 
     <!-- Form to enter Email and NIC -->
@@ -22,11 +27,11 @@
                 <h1>User Login</h1>
                 <form method="post" action="unified_login.php">
                     <div class="input-box">
-                        <label for="email">Email</label>
+                        <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="input-box">
-                        <label for="password">Password</label>
+                        <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
                     <button type="submit" class="btn">Login</button>
