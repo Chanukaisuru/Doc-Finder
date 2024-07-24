@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_users.css">
+    <script>
+        function validateForm() {
+            let email = document.getElementById('email').value;
+            let nic = document.getElementById('nic').value;
+            let errorMsg = '';
+
+            if (email === '' || nic === '') {
+                errorMsg += 'Please provide both the user\'s email and patient\'s NIC.\n';
+            }
+
+            if (errorMsg) {
+                document.getElementById('message').innerText = errorMsg;
+                document.getElementById('message').style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div class="headers">
@@ -18,7 +36,11 @@
 <div>
     <div class="wrapper">
         <h1>Delete User</h1>
-        <form method="post" action="">
+        <!-- Message Box for Error and Success Messages -->
+    <div class="message-box">
+        <p id="message"></p>
+    </div>
+        <form method="post" action="" onsubmit="return validateForm()">
             <div class="input-box">
                 <label for="email">User Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -29,6 +51,11 @@
             </div><br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
+    </div>
+
+    <!-- Message Box for Error and Success Messages -->
+    <div class="message-box">
+        <p id="message"></p>
     </div>
 
     <?php
@@ -43,14 +70,17 @@
 
         // Validate form data
         if (empty($email) || empty($nic)) {
-            echo 'Please provide both the user\'s email and patient\'s NIC.';
+            echo '<script>document.getElementById("message").innerText = "Please provide both the user\'s email and patient\'s NIC.";</script>';
+            echo '<script>document.getElementById("message").style.color = "red";</script>';
         } else {
             // Prepare the select statement for the patients table
             $sql_patients = "SELECT nic, first_name, last_name, age, phone_no, address, district, sick FROM patients WHERE nic = ?";
             $stmt_patients = $conn->prepare($sql_patients);
 
             if (!$stmt_patients) {
-                die('Prepare failed: ' . $conn->error);
+                echo '<script>document.getElementById("message").innerText = "Prepare failed: ' . htmlspecialchars($conn->error) . '";</script>';
+                echo '<script>document.getElementById("message").style.color = "red";</script>';
+                die();
             }
 
             $stmt_patients->bind_param("s", $nic);
@@ -80,13 +110,14 @@
                     </form>
                     <?php
                 } else {
-                    echo 'No patient found with that NIC.';
+                    echo '<script>document.getElementById("message").innerText = "No patient found with that NIC.";</script>';
+                    echo '<script>document.getElementById("message").style.color = "red";</script>';
                 }
             } else {
-                echo 'Error: ' . $stmt_patients->error;
+                echo '<script>document.getElementById("message").innerText = "Error: ' . htmlspecialchars($stmt_patients->error) . '";</script>';
+                echo '<script>document.getElementById("message").style.color = "red";</script>';
             }
 
-        
             $stmt_patients->close();
         }
     }
@@ -139,10 +170,10 @@
         } catch (Exception $e) {
             // Rollback the transaction if an error occurred
             $conn->rollback();
-            echo 'Error: ' . $e->getMessage();
+            echo '<script>document.getElementById("message").innerText = "Error: ' . htmlspecialchars($e->getMessage()) . '";</script>';
+            echo '<script>document.getElementById("message").style.color = "red";</script>';
         }
 
-    
         if (isset($stmt_users)) {
             $stmt_users->close();
         }
