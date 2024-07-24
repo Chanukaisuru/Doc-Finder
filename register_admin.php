@@ -15,8 +15,20 @@
         </a>
     </div>
     <div class="wrapper">
+        
         <form method="post" action="process_register_admin.php" novalidate>
             <h1>Admin Signup</h1>
+            <?php
+        session_start();
+        if (isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])) {
+            echo "<p style='color: red;'>" . $_SESSION['error_message'] . "</p>";
+            unset($_SESSION['error_message']);
+        }
+        if (isset($_SESSION['success_message']) && !empty($_SESSION['success_message'])) {
+            echo "<p style='color: green;'>" . $_SESSION['success_message'] . "</p>";
+            unset($_SESSION['success_message']);
+        }
+        ?>
             <div class="input-box">    
                 <label for="admin_name">Admin Name</label>
                 <input type="text" id="admin_name" name="admin_name" required>
@@ -33,7 +45,6 @@
                 <label for="password_confirmation">Repeat Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
             </div>
-            <form action="unified_login.html" method="post">
             <button type="submit" class="btn">Sign Up</button>
         </form>
     </div>
