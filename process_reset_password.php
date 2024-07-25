@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // Redirect to login page after successful reset
-        header("Location: unified_login.html");
+        header("Location: login.html");
         exit();
     } else {
         die('Error: ' . $stmt->error);

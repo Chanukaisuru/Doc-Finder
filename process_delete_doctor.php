@@ -5,14 +5,54 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_doctor.css">
+    <style>
+        .message-box {
+            text-align: center; /* Center the text */
+            font-size: 18px;    /* Set a comfortable font size */
+            margin: 20px 0;     /* Add space above and below */
+        }
+
+        .message-box p {
+            margin: 0;          /* Remove default margin */
+            padding: 10px;      /* Add padding for spacing */
+        }
+
+        .message-box .error {
+            color: red;         /* Set font color for errors */
+        }
+
+        .message-box .success {
+            color: green;       /* Set font color for success messages */
+        }
+    </style>
+    <script>
+        function validateForm() {
+            let email = document.getElementById('email').value;
+            let regNo = document.getElementById('reg_no').value;
+            let errorMsg = '';
+
+            if (email === '' || regNo === '') {
+                errorMsg += 'Please provide both the user\'s email and doctor\'s registration number.\n';
+            }
+
+            if (errorMsg) {
+                document.getElementById('message').innerHTML = errorMsg;
+                document.getElementById('message').classList.add('error');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div class="headers">
-    <a href="home.html" class="logo">
-        <div class="lo">
-            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-        </div> DOC FINDER
-    </a>
+<a href="home.html" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
+        </a>
 
     <div class="auth-buttons">
         <a href="home.html" class="btn">Home</a>
@@ -24,7 +64,12 @@
 <div>
     <div class="wrapper">
         <h1>Delete Doctor</h1>
-        <form method="post" action="">
+        <!-- Message Box for Error and Success Messages -->
+        <div class="message-box">
+            <p id="message"></p>
+        </div>
+
+        <form method="post" action="" onsubmit="return validateForm()">
             <div class="input-box">
                 <label for="email">Doctor's Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -33,6 +78,7 @@
                 <label for="reg_no">Doctor Registration Number:</label>
                 <input type="text" id="reg_no" name="reg_no" required>
             </div>
+            <br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
@@ -47,18 +93,13 @@
         $email = $_POST['email'];
         $reg_no = $_POST['reg_no'];
 
-        // Validate form data
-        if (empty($email) || empty($reg_no)) {
-            echo 'Please provide both the user\'s email and doctor\'s registration number.';
+        // Prepare the select statement for the doctors table
+        $sql_doctors = "SELECT reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address FROM doctors WHERE reg_no = ?";
+        $stmt_doctors = $conn->prepare($sql_doctors);
+
+        if (!$stmt_doctors) {
+            echo '<script>document.getElementById("message").innerHTML = "Prepare failed: ' . $conn->error . '"; document.getElementById("message").classList.add("error");</script>';
         } else {
-            // Prepare the select statement for the doctors table
-            $sql_doctors = "SELECT reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address FROM doctors WHERE reg_no = ?";
-            $stmt_doctors = $conn->prepare($sql_doctors);
-
-            if (!$stmt_doctors) {
-                die('Prepare failed: ' . $conn->error);
-            }
-
             $stmt_doctors->bind_param("s", $reg_no);
 
             if ($stmt_doctors->execute()) {
@@ -69,37 +110,37 @@
                     $doctor = $result->fetch_assoc();
                     ?>
                     <div class="sr">
-                    <h2>Doctor Details</h2>
-                    <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
-                    <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
-                    <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($doctor['phone_no']); ?></p>
-                    <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
-                    <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
-                    <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
-                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
-                    <p><strong>Hospital:</strong> <?php echo htmlspecialchars($doctor['hospital']); ?></p>
-                    <p><strong>Address:</strong> <?php echo htmlspecialchars($doctor['address']); ?></p>
+                        <h2>Doctor Details</h2>
+                        <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
+                        <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
+                        <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($doctor['phone_no']); ?></p>
+                        <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
+                        <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
+                        <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
+                        <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
+                        <p><strong>Address:</strong> <?php echo htmlspecialchars($doctor['address']); ?></p>
 
-                    <?php if (!empty($doctor['profile_photo'])): ?>
-                        <p><strong>Profile Photo:</strong></p>
-                        <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
-                    <?php else: ?>
-                        <p><strong>Profile Photo:</strong> No photo available.</p>
-                    <?php endif; ?> 
+                        <?php if (!empty($doctor['profile_photo'])): ?>
+                            <p><strong>Profile Photo:</strong></p>
+                            <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
+                        <?php else: ?>
+                            <p><strong>Profile Photo:</strong> No photo available.</p>
+                        <?php endif; ?>
 
-                    <!-- Form to confirm deletion -->
-                    <form method="post" action="">
-                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
-                        <input type="hidden" name="reg_no" value="<?php echo htmlspecialchars($reg_no); ?>">
-                        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($doctor['user_id']); ?>">
-                        <input type="submit" name="delete" value="Delete Doctor">
-                    </form>
+                        <!-- Form to confirm deletion -->
+                        <form method="post" action="">
+                            <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                            <input type="hidden" name="reg_no" value="<?php echo htmlspecialchars($reg_no); ?>">
+                            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($doctor['user_id']); ?>">
+                            <input type="submit" name="delete" value="Delete Doctor">
+                        </form>
+                    </div>
                     <?php
                 } else {
-                    echo 'No doctor found with that registration number.';
+                    echo '<script>document.getElementById("message").innerHTML = "No doctor found with that registration number."; document.getElementById("message").classList.add("error");</script>';
                 }
             } else {
-                echo 'Error: ' . $stmt_doctors->error;
+                echo '<script>document.getElementById("message").innerHTML = "Error: ' . $stmt_doctors->error . '"; document.getElementById("message").classList.add("error");</script>';
             }
 
             // Close the statement
@@ -156,7 +197,7 @@
         } catch (Exception $e) {
             // Rollback the transaction if an error occurred
             $conn->rollback();
-            echo 'Error: ' . $e->getMessage();
+            echo '<script>document.getElementById("message").innerHTML = "Error: ' . $e->getMessage() . '"; document.getElementById("message").classList.add("error");</script>';
         }
 
         // Close the statements and connection
@@ -168,7 +209,7 @@
         }
         $conn->close();
     }
-    ?></div>
+    ?>
 </div>
 </body>
 </html>

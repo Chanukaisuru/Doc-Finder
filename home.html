@@ -1,15 +1,3 @@
-<?php
-
-include 'connect.php';
-session_start();
-
-$user_id = $_SESSION['user_id'];
-
-if(!isset($user_id)){
-   header('location:login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,6 +5,7 @@ if(!isset($user_id)){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DOC FIND</title>
+        <link rel="icon" href="resources/img/doc_logo.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="resources/css/style_home1.css">
@@ -332,7 +321,7 @@ if(!isset($user_id)){
 
                     <div class="swiper-slide box">
                         <img src="resources/img/pic-2.png" alt="">
-                        <p> very easy and fasth. Thank you...........</p>
+                        <p> very easy and fast. Thank you...........</p>
                         <h3>Natasha Pathirana</h3>
                         <div class="stars">
                             <i class="fas fa-star"></i>
@@ -344,7 +333,7 @@ if(!isset($user_id)){
                     </div>
 
                     <div class="swiper-slide box">
-                        <img src="resources/img/pic-3.pngg" alt="">
+                        <img src="resources/img/pic-3.png" alt="">
                         <p>Great description of Diseases. Like new. Very prompt as well.</p>
                         <h3>Naveen Perera</h3>
                         <div class="stars">
@@ -397,7 +386,7 @@ if(!isset($user_id)){
                 <h3>Contact Info</h3>
                 <a href="#" class="links"> <i class="fas fa-phone"></i> +94765623890</a>
                 <a href="#" class="links"> <i class="fas fa-phone"></i> +94726598456 </a>
-                <a href="#" class="links"> <i class="fas fa-envelope"></i> ravindu@gmail.com | tharindu@gmail.com| harshani@gmail.com | chanukaa@gmail.com | isurika@gmail.com </a>
+                <a href="#" class="links"> <i class="fas fa-envelope"></i> docfinder2001@gmail.com </a>
                 <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> Hambanthota - Srilanka</a>
             </div>
 
@@ -431,7 +420,7 @@ if(!isset($user_id)){
     </body>
 </html>
 
-<!-- Test Comment        -->
+
 
     </body>
 </html>
