@@ -5,6 +5,26 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_users.css">
+    <style>
+        .message-box {
+            text-align: center; /* Center the text */
+            font-size: 16px;    /* Set the font size */
+            margin: 20px 0;     /* Add some space above and below */
+        }
+
+        .message-box p {
+            margin: 0;          /* Remove default margin */
+            padding: 10px;      /* Add padding */
+        }
+
+        .message-box .error {
+            color: red;         /* Set font color for errors */
+        }
+
+        .message-box .success {
+            color: green;       /* Set font color for success messages */
+        }
+    </style>
     <script>
         function validateForm() {
             let email = document.getElementById('email').value;
@@ -16,8 +36,9 @@
             }
 
             if (errorMsg) {
-                document.getElementById('message').innerText = errorMsg;
-                document.getElementById('message').style.color = 'red';
+                let messageElement = document.getElementById('message');
+                messageElement.innerText = errorMsg;
+                messageElement.className = 'error';
                 return false;
             }
             return true;
@@ -37,9 +58,9 @@
     <div class="wrapper">
         <h1>Delete User</h1>
         <!-- Message Box for Error and Success Messages -->
-    <div class="message-box">
-        <p id="message"></p>
-    </div>
+        <div class="message-box">
+            <p id="message"></p>
+        </div>
         <form method="post" action="" onsubmit="return validateForm()">
             <div class="input-box">
                 <label for="email">User Email:</label>
@@ -51,11 +72,6 @@
             </div><br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
-    </div>
-
-    <!-- Message Box for Error and Success Messages -->
-    <div class="message-box">
-        <p id="message"></p>
     </div>
 
     <?php
@@ -70,16 +86,22 @@
 
         // Validate form data
         if (empty($email) || empty($nic)) {
-            echo '<script>document.getElementById("message").innerText = "Please provide both the user\'s email and patient\'s NIC.";</script>';
-            echo '<script>document.getElementById("message").style.color = "red";</script>';
+            echo '<script>
+                    let messageElement = document.getElementById("message");
+                    messageElement.innerText = "Please provide both the user\'s email and patient\'s NIC.";
+                    messageElement.className = "error";
+                  </script>';
         } else {
             // Prepare the select statement for the patients table
             $sql_patients = "SELECT nic, first_name, last_name, age, phone_no, address, district, sick FROM patients WHERE nic = ?";
             $stmt_patients = $conn->prepare($sql_patients);
 
             if (!$stmt_patients) {
-                echo '<script>document.getElementById("message").innerText = "Prepare failed: ' . htmlspecialchars($conn->error) . '";</script>';
-                echo '<script>document.getElementById("message").style.color = "red";</script>';
+                echo '<script>
+                        let messageElement = document.getElementById("message");
+                        messageElement.innerText = "Prepare failed: ' . htmlspecialchars($conn->error) . '";
+                        messageElement.className = "error";
+                      </script>';
                 die();
             }
 
@@ -110,12 +132,18 @@
                     </form>
                     <?php
                 } else {
-                    echo '<script>document.getElementById("message").innerText = "No patient found with that NIC.";</script>';
-                    echo '<script>document.getElementById("message").style.color = "red";</script>';
+                    echo '<script>
+                            let messageElement = document.getElementById("message");
+                            messageElement.innerText = "No patient found with that NIC.";
+                            messageElement.className = "error";
+                          </script>';
                 }
             } else {
-                echo '<script>document.getElementById("message").innerText = "Error: ' . htmlspecialchars($stmt_patients->error) . '";</script>';
-                echo '<script>document.getElementById("message").style.color = "red";</script>';
+                echo '<script>
+                        let messageElement = document.getElementById("message");
+                        messageElement.innerText = "Error: ' . htmlspecialchars($stmt_patients->error) . '";
+                        messageElement.className = "error";
+                      </script>';
             }
 
             $stmt_patients->close();
@@ -159,7 +187,14 @@
                     // Commit the transaction
                     $conn->commit();
                     // Redirect to the admin dashboard with a success message
-                    header("Location: admin_dashboard.html");
+                    echo '<script>
+                            let messageElement = document.getElementById("message");
+                            messageElement.innerText = "Patient and user deleted successfully.";
+                            messageElement.className = "success";
+                            setTimeout(() => {
+                                window.location.href = "admin_dashboard.html";
+                            }, 2000);
+                          </script>';
                     exit();
                 } else {
                     throw new Exception('No user found with that email.');
@@ -170,8 +205,11 @@
         } catch (Exception $e) {
             // Rollback the transaction if an error occurred
             $conn->rollback();
-            echo '<script>document.getElementById("message").innerText = "Error: ' . htmlspecialchars($e->getMessage()) . '";</script>';
-            echo '<script>document.getElementById("message").style.color = "red";</script>';
+            echo '<script>
+                    let messageElement = document.getElementById("message");
+                    messageElement.innerText = "Error: ' . htmlspecialchars($e->getMessage()) . '";
+                    messageElement.className = "error";
+                  </script>';
         }
 
         if (isset($stmt_users)) {
