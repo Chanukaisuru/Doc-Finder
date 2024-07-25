@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="resources/css/delete_users.css">
     <style>
         .message-box {
-            text-align: center; /* Center the text */
-            font-size: 16px;    /* Set the font size */
-            margin: 20px 0;     /* Add some space above and below */
+            text-align: center; 
+            font-size: 16px;    
+            margin: 20px 0;     
         }
 
         .message-box p {
-            margin: 0;          /* Remove default margin */
-            padding: 10px;      /* Add padding */
+            margin: 0;          
+            padding: 10px;      
         }
 
         .message-box .error {
-            color: red;         /* Set font color for errors */
+            color: red;         
         }
 
         .message-box .success {
-            color: green;       /* Set font color for success messages */
+            color: green;       
         }
     </style>
     <script>
@@ -47,11 +47,13 @@
 </head>
 <body>
 <div class="headers">
-    <a href="#" class="logo">
-        <div class="lo">
-            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-        </div> DOC FINDER
-    </a>
+        <a href="home.html" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
+        </a>
 </div>
 
 <div>

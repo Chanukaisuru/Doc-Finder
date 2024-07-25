@@ -51,7 +51,15 @@ html{
 .lo{
     position: fixed;
     margin-left:-110px;
-    margin-top: -20px;
+    margin-top: -35px;
+    
+}
+
+.log p{
+    color: black;
+    position: fixed;
+    margin-left:7px;
+    margin-top: -15px;
 }
 
 .wrapper {
@@ -123,20 +131,20 @@ html{
 }
 
 .message-box {
-    text-align: center; /* Center the text */
-    font-size: 16px;    /* Set the font size */
-    margin: 20px 0;     /* Add some space above and below */
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0;
 }
 
 .message-box p {
-    margin: 0;          /* Remove default margin */
-    padding: 10px;      /* Add padding */
+    margin: 0;
+    padding: 10px;
 }
 
 .message-box .error {
-    color: red;         /* Set font color for errors */
+    color: red;         
 }
 
 .message-box .success {
-    color: green;       /* Set font color for success messages */
+    color: green;       
 }

@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="resources/css/delete_doctor.css">
     <style>
         .message-box {
-            text-align: center; /* Center the text */
-            font-size: 18px;    /* Set a comfortable font size */
-            margin: 20px 0;     /* Add space above and below */
+            text-align: center; 
+            font-size: 18px;    
+            margin: 20px 0;    
         }
 
         .message-box p {
-            margin: 0;          /* Remove default margin */
-            padding: 10px;      /* Add padding for spacing */
+            margin: 0;          
+            padding: 10px;      
         }
 
         .message-box .error {
-            color: red;         /* Set font color for errors */
+            color: red;         
         }
 
         .message-box .success {
-            color: green;       /* Set font color for success messages */
+            color: green;       
         }
     </style>
     <script>
