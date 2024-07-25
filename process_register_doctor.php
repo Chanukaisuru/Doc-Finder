@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if($stmt->num_rows > 0){
             // reg_no already exists
-            $_SESSION['error_message'] = 'Registration number already exists.';
+            $_SESSION['error_message'] = 'Registration number already exists. Please use a different registration number.';
         } else {
             // Insert new user record
             $sql = "INSERT INTO users (email, user_name, password, role_no) VALUES (?, ?, ?, ?)";
