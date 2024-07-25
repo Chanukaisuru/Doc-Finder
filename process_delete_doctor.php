@@ -6,11 +6,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_doctor.css">
     <style>
-        .message-box .error {
-            color: red;
+        .message-box {
+            text-align: center; 
+            font-size: 18px;    
+            margin: 20px 0;    
         }
+
+        .message-box p {
+            margin: 0;          
+            padding: 10px;      
+        }
+
+        .message-box .error {
+            color: red;         
+        }
+
         .message-box .success {
-            color: green;
+            color: green;       
         }
     </style>
     <script>
@@ -34,11 +46,13 @@
 </head>
 <body>
 <div class="headers">
-    <a href="home.html" class="logo">
-        <div class="lo">
-            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-        </div> DOC FINDER
-    </a>
+<a href="home.html" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
+        </a>
 
     <div class="auth-buttons">
         <a href="home.html" class="btn">Home</a>
@@ -51,9 +65,9 @@
     <div class="wrapper">
         <h1>Delete Doctor</h1>
         <!-- Message Box for Error and Success Messages -->
-    <div class="message-box">
-        <p id="message"></p>
-    </div>
+        <div class="message-box">
+            <p id="message"></p>
+        </div>
 
         <form method="post" action="" onsubmit="return validateForm()">
             <div class="input-box">
@@ -64,11 +78,11 @@
                 <label for="reg_no">Doctor Registration Number:</label>
                 <input type="text" id="reg_no" name="reg_no" required>
             </div>
+            <br>
             <input type="submit" class="btn" name="search" value="Search">
         </form>
     </div>
 
-    
     <?php
     // Include the database connection file
     include 'database.php';
@@ -96,34 +110,34 @@
                     $doctor = $result->fetch_assoc();
                     ?>
                     <div class="sr">
-                    <h2>Doctor Details</h2>
-                    <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
-                    <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
-                    <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($doctor['phone_no']); ?></p>
-                    <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
-                    <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
-                    <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
-                    <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
-                    <p><strong>Address:</strong> <?php echo htmlspecialchars($doctor['address']); ?></p>
+                        <h2>Doctor Details</h2>
+                        <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
+                        <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
+                        <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($doctor['phone_no']); ?></p>
+                        <p><strong>District:</strong> <?php echo htmlspecialchars($doctor['district']); ?></p>
+                        <p><strong>Location:</strong> <?php echo htmlspecialchars($doctor['location']); ?></p>
+                        <p><strong>Qualification:</strong> <?php echo htmlspecialchars($doctor['qualification']); ?></p>
+                        <p><strong>Specialty:</strong> <?php echo htmlspecialchars($doctor['specialty']); ?></p>
+                        <p><strong>Address:</strong> <?php echo htmlspecialchars($doctor['address']); ?></p>
 
-                    <?php if (!empty($doctor['profile_photo'])): ?>
-                        <p><strong>Profile Photo:</strong></p>
-                        <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
-                    <?php else: ?>
-                        <p><strong>Profile Photo:</strong> No photo available.</p>
-                    <?php endif; ?> 
+                        <?php if (!empty($doctor['profile_photo'])): ?>
+                            <p><strong>Profile Photo:</strong></p>
+                            <img src="<?php echo htmlspecialchars($doctor['profile_photo']); ?>" alt="Profile Photo" style="width: 150px; height: auto;">
+                        <?php else: ?>
+                            <p><strong>Profile Photo:</strong> No photo available.</p>
+                        <?php endif; ?>
 
-                    <!-- Form to confirm deletion -->
-                    <form method="post" action="">
-                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
-                        <input type="hidden" name="reg_no" value="<?php echo htmlspecialchars($reg_no); ?>">
-                        <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($doctor['user_id']); ?>">
-                        <input type="submit" name="delete" value="Delete Doctor">
-                    </form>
+                        <!-- Form to confirm deletion -->
+                        <form method="post" action="">
+                            <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                            <input type="hidden" name="reg_no" value="<?php echo htmlspecialchars($reg_no); ?>">
+                            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($doctor['user_id']); ?>">
+                            <input type="submit" name="delete" value="Delete Doctor">
+                        </form>
                     </div>
                     <?php
                 } else {
-                    echo '<script>document.getElementById("message").innerHTML = "No doctor found with that registration number.";</script>';
+                    echo '<script>document.getElementById("message").innerHTML = "No doctor found with that registration number."; document.getElementById("message").classList.add("error");</script>';
                 }
             } else {
                 echo '<script>document.getElementById("message").innerHTML = "Error: ' . $stmt_doctors->error . '"; document.getElementById("message").classList.add("error");</script>';
@@ -196,7 +210,6 @@
         $conn->close();
     }
     ?>
-</div>
 </div>
 </body>
 </html>
