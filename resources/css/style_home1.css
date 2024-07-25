@@ -1034,7 +1034,7 @@ section:nth-child(even){
  }
 
  /* placed orders */
- .placed-orders .box-container{
+ .f .box-container{
     max-width: 1200px;
     margin:0 auto;
     display:flex;
