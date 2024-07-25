@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2024 at 05:18 PM
+-- Generation Time: Jul 25, 2024 at 08:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,11 +46,11 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`reg_no`, `user_id`, `name`, `phone_no`, `district`, `location`, `qualification`, `specialty`, `profile_photo`, `hospital`, `address`) VALUES
-('ch123', 36, 'chanuka dilshan', '0125632147', 'Hambantota', 'hambantota', 'MBBS', 'Dentist', 'uploads/selectDoctor_image.jpg', 'hambantota', NULL),
-('mbbs123', 37, 'Tharindu Dilshan', '0766263405', 'Kandy', 'matara', 'xsdfghnbvc', 'Ophthalmologist', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL),
-('mbbs1234', 39, 'Tharindu Dilshan', '0766263405', 'Galle', 'matara', 'xsdfghnbvc', 'Orthopedic surgeon', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL),
-('mbbs123456', 40, 'Tharindu Dilshan', '0766263405', 'Kandy', 'matara', 'xsdfghnbvc', 'Orthopedic surgeon', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL),
-('mbbs1235', 41, 'Tharindu Dilshan', '0766263405', 'Gampaha', 'matara', 'mbbs', 'Gynecologist', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL);
+('mbbs123', 57, 'Tharindu Dilshan', '0766263405', 'Galle', 'matara', 'mbbs1258', 'Orthopedic surgeon', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL),
+('mbbs1232689', NULL, 'Tharindu Dilshan', '0766263405', 'Colombo', 'matara', 'mbbs1258', 'Gynecologist', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs123454', NULL, 'Tharindu Dilshan', '0766263405', 'Kandy', 'matara', 'xsdfghnbvc2652', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs1235', 60, 'Tharindu Dilshan', '0766263405', 'Colombo', '6.175126004190012, 80.60610863497429', 'mbbs1258', 'Orthopedic surgeon', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs12389', 59, 'Tharindu Dilshan', '0766263405', 'Matara', 'matara', 'xsdfghnbvc2652', 'Dermatologist', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala');
 
 -- --------------------------------------------------------
 
@@ -130,13 +130,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `user_name`, `password`, `role_no`, `otp_code`, `otp_expires_at`, `created_at`) VALUES
-(35, 'chanukaisuru563@gmail.com', 'chanuka dilshan', '', 2, NULL, NULL, '2024-07-18 09:04:45'),
-(36, 'chanukaisuru63@gmail.com', 'chanuka dilshan', '', 2, NULL, NULL, '2024-07-18 09:55:00'),
-(37, 'chanukaisuru246@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-18 10:12:08'),
-(39, 'tharindu@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-19 07:27:46'),
-(40, 'chanukaisuru63@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-19 14:40:39'),
-(41, 'chanukaisuru26kk@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-19 15:05:42'),
-(42, 'admin@gmail.com', 'admin', '$2y$10$eP3J/Hi4a0C1Iu3fK7AFxu83.EaP1svfMjiqHhZjVJ1g0f1TSx5ja', 1, NULL, NULL, '2024-07-19 15:12:37');
+(54, 'ravinduhasith7002@gmail.com', 'admin', '$2y$10$qHuseJQBCXz17PN1eITDwOi7m7xJaDlpBEyQr/3XDe7BN5KmDZBGK', 1, '705229', '2024-07-24 18:36:53', '2024-07-24 05:45:56'),
+(55, 'tharindudilshan6263@gmail.com', 'admin', '$2y$10$xPNPSB45f3oJ0Ksl4b//Y.7KRc2j2JecBbryqv3wM2F3TQLKzmTWC', 1, NULL, NULL, '2024-07-24 06:31:49'),
+(57, 'chanukaisuru26@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 17:08:34'),
+(58, 'tharindudilshan626563@gmail.com', 'Tharindu Dilshan', '$2y$10$NZ.icS9.BfZVR3FnHyrPOu1KmNASGlSD0KgTt7MmYho8QXL4VQoZK', 2, NULL, NULL, '2024-07-25 17:59:48'),
+(59, 'tharindudilshan656263@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:03:15'),
+(60, 'chanukaisuru256@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:05:27');
 
 --
 -- Indexes for dumped tables
@@ -194,7 +193,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Constraints for dumped tables
