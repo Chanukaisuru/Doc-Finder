@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if($stmt->num_rows > 0){
             // reg_no already exists
-            $_SESSION['error_message'] = 'Registration number already exists. Please use a different registration number.';
+            $_SESSION['error_message'] = 'Registration number already exists. ';
         } else {
             // Insert new doctor record
             $sql = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
