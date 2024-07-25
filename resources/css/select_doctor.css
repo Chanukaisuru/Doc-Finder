@@ -215,3 +215,244 @@ body {
     margin: 0 2px;
     color: blue;
 }
+@media(max-width:1200px){
+    .fil-p {
+        width: 150px;
+        height: 40px;
+    }
+
+    .card {
+        width: 200px;
+        height: auto;
+    }
+
+    .card .image {
+        height: 110px;
+        width: 110px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .specialty {
+        font-size: 16px;
+    }
+
+}
+@media (max-width: 875px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .header p {
+        font-size: 28px;
+    }
+
+    .district_filter h3 {
+        font-size: 20px;
+       
+    }
+
+    .fil-p {
+        width: 130px;
+        height: 40px;
+    }
+
+    .card {
+        width: 200px;
+        height: auto;
+        
+    }
+
+    .card .image {
+        height: 100px;
+        width: 100px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .specialty {
+        font-size: 16px;
+    }
+
+    #root {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 300px;
+        
+    }
+}
+
+@media (max-width: 870px) {
+    .sidebar {
+        margin-top: 100px;
+       
+    }
+
+    .district_filter h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .fil-p {
+        width: 110px;
+        height: 35px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .card {
+        width: 180px;
+    }
+
+    .card .image {
+        height: 90px;
+        width: 90px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+
+    .specialty {
+        font-size: 14px;
+    }
+
+    .fil-p:last-child {
+        align-self: center;
+    }
+
+    #root {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 100%;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .district_filter h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .fil-p {
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        width: 160px;
+    }
+
+    .card .image {
+        height: 80px;
+        width: 80px;
+    }
+
+    .name {
+        font-size: 12px;
+    }
+
+    .specialty {
+        font-size: 12px;
+    }
+
+    .fil-p:last-child {
+        align-self: center;
+    }
+
+    #root {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        padding: 20px;
+    }
+}
+@media (max-width: 479px) {
+    
+    .sidebar {
+        width: 100%;
+        align-items: center;
+        margin-top: 80px;
+    }
+
+    .card {
+        width: 160px;
+        margin-top: 70px;
+    }
+
+}
+@media (max-width: 320px) {
+    .header p {
+        font-size: 24px;
+        text-align: center;
+    }
+
+   /* .sidebar {
+        width: 100%;
+        align-items: center;
+    }
+
+    .district_filter h3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .fil-p {
+        width: 90px;
+        height: 25px;
+        font-size: 10px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .card {
+        width: 140px;
+    }
+
+    .card .image {
+        height: 70px;
+        width: 70px;
+    }
+
+    .name {
+        font-size: 10px;
+    }
+
+    .specialty {
+        font-size: 10px;
+    }
+
+    #root {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 5px;
+        padding: 10px;
+    }*/
+}
