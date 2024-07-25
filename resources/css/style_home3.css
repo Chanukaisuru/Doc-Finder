@@ -60,10 +60,9 @@
   filter: brightness(0.50) saturate(1.2) contrast(0.85);
   left: 0;
   position: absolute;
-  right: 0;
+  right:0;
   top: 0;
   transform-origin: center;
-  trsnsform: scale(1) translateZ(0);
   transition: 
     filter 200ms linear,
     transform 200ms linear;
@@ -73,9 +72,9 @@
   transform: scale(1.05) translateZ(0);
 }
 
-.card-grid:hover > .card:not(:hover) .card__background{
+/**.card-grid:hover > .card:not(:hover) .card__background{
   filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
-}
+}**/
 
 .card__content{
   left: 0;
