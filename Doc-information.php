@@ -32,7 +32,7 @@ $conn->close();
 <body>
     <div class="main">
         <div class="top-section">
-            <img src="<?php echo $doctor['profile_photo']; ?>" class="profile">
+            <img src="uploads/<?php echo $doctor['profile_photo']; ?>" class="profile">
             <p class="p1"><?php echo $doctor['name']; ?></p>
             <p class="p2"><?php echo $doctor['specialty']; ?></p>
         </div>
