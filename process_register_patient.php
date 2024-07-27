@@ -13,7 +13,7 @@ $last_name = $_POST['last_name'];
 $age = $_POST['age'];
 $phone_no = $_POST['phone_no'];
 $address = $_POST['address'];
-$district = $_POST['district']; // Changed from province to district
+$district = $_POST['district']; 
 $sick = $_POST['sick'];
 
 // Check if email already exists in the users table
