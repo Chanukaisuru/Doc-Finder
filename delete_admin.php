@@ -6,6 +6,20 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/delete_doctor.css">
+
+    <style>
+        .error {
+            color: #d8000c;
+            font-size: 14px;
+            margin-left:90px;
+        }
+
+        .success {
+            color: #4f8a10;
+            font-size: 14px;
+            margin-left:90px;
+        }
+    </style>
 </head>
 <body>
 <div class="headers">
@@ -77,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
         if ($result->num_rows > 0) {
             $admin = $result->fetch_assoc();
             ?>
-            <div class="wrapper">
+            <div class="wrapper1">
                 <h2>Admin Details</h2>
                 <p><strong>Name:</strong> <?php echo htmlspecialchars($admin['user_name']); ?></p>
                 <p><strong>Email:</strong> <?php echo htmlspecialchars($admin['email']); ?></p>
@@ -89,11 +103,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
                         <label for="password"><span style="font-size:16px; color:black; font-weight: bold;">Admin's Password:</span></label>
                         <input type="password" id="password" name="password" required>
                     </div>
+                    <br>
                     <input type="submit" name="delete" value="Delete Admin" class="delete-btn">
                 </form>
             </div>
             <?php
         } else {
+
             $_SESSION['error_message'] = 'No admin found with that email.';
             header("Location: delete_admin.php");
             exit();
