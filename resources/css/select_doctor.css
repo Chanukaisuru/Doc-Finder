@@ -46,8 +46,9 @@ body {
 .district_filter h3 {
     margin: 20px;
     color: #040b2e;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
 }
 
 .fil-p {
@@ -115,9 +116,11 @@ body {
 
 .header p {
     font-size: 50px;
+    font-family: 'Nunito', sans-serif;
     font-weight: bold;
-    color: #000000;
+    color: #040b2e;
     margin-top: 10px;
+    
    
 }
 
