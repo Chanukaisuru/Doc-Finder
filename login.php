@@ -6,6 +6,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="resources/css/login.css">
+    <style>
+        .message-box .error {
+            color: red;
+        }
+        .message-box .success {
+            color: green;
+        }
+    </style>
 </head>
 <body>
 <div class="headers">
@@ -26,6 +34,7 @@
         <h1>User Login</h1>
          <!-- Display messages -->
          <div class="message-box">
+         <div class="message-box">
             <?php
             // Start session
             session_start();
@@ -42,6 +51,7 @@
                 $_SESSION['success_message'] = ''; // Clear the message after displaying
             }
             ?>
+            </div>
         </div>
         <form method="post" action="unified_login.php">
             <div class="input-box">
