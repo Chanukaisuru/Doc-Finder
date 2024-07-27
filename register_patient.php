@@ -6,20 +6,14 @@
     <title>Doctor Registration</title>
     <link rel="icon" href="resources/img/doc_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="resources/css/register_doctor.css">
-<<<<<<< HEAD
-=======
 
->>>>>>> e5c60945530bc69fdb4962da3e52b49702dd7a3a
     <title>Patient Registration</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="resources/css/loging.css">
 
     
-<<<<<<< HEAD
 
-=======
->>>>>>> e5c60945530bc69fdb4962da3e52b49702dd7a3a
 </head>
 <body>
     <div class="headers">
@@ -32,6 +26,25 @@
 
     <div class="wrapper">
         <h1>Patient Registration</h1>
+          <!-- Display messages -->
+          <div class="message-box">
+            <?php
+            // Start session
+            session_start();
+
+            // Display error message if any
+            if (!empty($_SESSION['error_message'])) {
+                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                $_SESSION['error_message'] = ''; // Clear the message after displaying
+            }
+
+            // Display success message if any
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; // Clear the message after displaying
+            }
+            ?>
+        </div>
         <form action="process_register_patient.php" method="post" enctype="multipart/form-data">
             
             <div class="input-box">

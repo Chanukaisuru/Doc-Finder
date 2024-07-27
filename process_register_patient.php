@@ -21,7 +21,7 @@ $stmt_check_email->execute();
 $result_check_email = $stmt_check_email->get_result();
 
 if ($result_check_email->num_rows > 0) {
-    die("Email already registered.");
+     $_SESSION['error_message'] = 'Email already registered.';
 }
 
 $stmt_check_email->close();
@@ -42,7 +42,7 @@ if ($stmt_user->execute()) {
     $result_check_nic = $stmt_check_nic->get_result();
 
     if ($result_check_nic->num_rows > 0) {
-        die("NIC already registered.");
+         $_SESSION['error_message'] ='NIC already registered.';
     }
 
     $stmt_check_nic->close();
