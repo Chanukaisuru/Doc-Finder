@@ -29,7 +29,7 @@
             <?php
         session_start();
         if (isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])) {
-            echo "<p style='color: red;'>" . $_SESSION['error_message'] . "</p>";
+            echo "<p style='color: red; margin-left: 100px;'>" . $_SESSION['error_message'] . "</p>";
             unset($_SESSION['error_message']);
         }
         if (isset($_SESSION['success_message']) && !empty($_SESSION['success_message'])) {
