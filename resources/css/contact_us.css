@@ -55,14 +55,7 @@ html {
 .lo {
     position: fixed;
     margin-left: -110px;
-    margin-top: -35px;
-}
-
-.log p{
-    color: black;
-    position: fixed;
-    margin-left:3px;
-    margin-top: -15px;
+    margin-top: -20px;
 }
 
 .container {
@@ -189,4 +182,10 @@ header h1 {
 
 .empty {
     height: 50px;
+}
+
+p{
+    font-size: 20px;
+    color:black;
+    margin-top: 5px;
 }
