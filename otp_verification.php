@@ -12,7 +12,9 @@
         <a href="home.html" class="logo">
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div> DOC FINDER
+                </div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
         </a>
         <div class="auth-buttons">
             <a href="login.html" class="btn">Loggin</a>
