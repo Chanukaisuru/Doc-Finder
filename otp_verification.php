@@ -21,6 +21,25 @@
     </div>
     <div class="wrapper">
         <h1>Verify OTP</h1>
+          <!-- Display messages -->
+          <div class="message-box">
+            <?php
+            // Start session
+            session_start();
+
+            // Display error message if any
+            if (!empty($_SESSION['error_message'])) {
+                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                $_SESSION['error_message'] = ''; // Clear the message after displaying
+            }
+
+            // Display success message if any
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; // Clear the message after displaying
+            }
+            ?>
+        </div>
         <form action="process_otp_verification.php" method="post" novalidate>
             <div class="input-box">
                 <label for="email">Email</label>

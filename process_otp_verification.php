@@ -9,12 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate input
     if (empty($email) || empty($otp_code)) {
-        die('Please fill all fields.');
+         $_SESSION['error_message'] ='Please fill all fields.';
     }
 
-    // Debug: Print input values (comment out after debugging)
-   // echo "Email: " . htmlspecialchars($email) . "<br>";
-    //echo "OTP Code: " . htmlspecialchars($otp_code) . "<br>";
+    
 
     // Check if the email and OTP code are valid and the OTP has not expired
     $sql = "SELECT * FROM users WHERE email = ? AND otp_code = ?";
@@ -28,19 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        die('Invalid OTP or email.');
+        $_SESSION['error_message'] ='Invalid OTP or email.';
     } else {
         $user = $result->fetch_assoc();
         $otp_expires_at = $user['otp_expires_at'];
 
-        // Debug: Print OTP expiration time
-      // echo "OTP Expires At: " . $otp_expires_at . "<br>";
+        
 
         if (new DateTime($otp_expires_at) < new DateTime()) {
-            die('OTP has expired.');
+            $_SESSION['error_message'] ='OTP has expired.';
         } else {
-            // OTP is valid, redirect to reset password page
-           // echo "<script>alert('OTP verified successfully. Please reset your password.'); window.location.href='reset_password.html;</script>";
+            
+           //OTP verified successful
            header("Location: reset_password.html");
         }
     }
