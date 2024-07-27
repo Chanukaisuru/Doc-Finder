@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->send();
     
-        header("Location: otp_verification.html");
+        header("Location: otp_verification.php");
     } catch (Exception $e) {
         $_SESSION['error_message'] = 'Message could not be sent. Please send an email to docfinder2001@gmail.com';
         header("Location: forgot_password.php");
