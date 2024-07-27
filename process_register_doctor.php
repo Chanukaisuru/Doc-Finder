@@ -47,17 +47,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if($stmt->num_rows > 0){
             // reg_no already exists
-            $_SESSION['error_message'] = 'Registration number already exists. ';
+            $_SESSION['error_message'] = 'Registration number already exists.';
         } else {
-            // Insert new doctor record
-            $sql = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // Insert new user record
+            $sql = "INSERT INTO users (email, user_name, password, role_no) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sisssssssss", $reg_no, $user_id, $name, $phone_no, $district, $location, $qualification, $specialty, $profile_photo, $hospital, $address);
+            $defaultPassword = ''; // Set default password or hash it
+            $role_no = 2; // Assuming 2 is the role for doctors
+            $stmt->bind_param("sssi", $email, $name, $defaultPassword, $role_no);
 
             if($stmt->execute()){
-                $_SESSION['success_message'] = 'Doctor registered successfully!';
+                $user_id = $stmt->insert_id; // Get the auto-incremented user_id
+
+                // Insert new doctor record
+                $sql = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sisssssssss", $reg_no, $user_id, $name, $phone_no, $district, $location, $qualification, $specialty, $profile_photo, $hospital, $address);
+
+                if($stmt->execute()){
+                    $_SESSION['success_message'] = 'Doctor registered successfully!';
+                } else {
+                    $_SESSION['error_message'] = 'Error: Could not register doctor.';
+                }
             } else {
-                $_SESSION['error_message'] = 'Error: Could not register doctor.';
+                $_SESSION['error_message'] = 'Error: Could not register user.';
             }
         }
 

@@ -2,7 +2,11 @@
 include 'database.php';
 
 $reg_no = $_GET['reg_no'];
-$sql = "SELECT * FROM doctors WHERE reg_no = ?";
+$sql = "
+    SELECT d.*, u.email 
+    FROM doctors d 
+    JOIN users u ON d.user_id = u.user_id 
+    WHERE d.reg_no = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $reg_no);
 $stmt->execute();
@@ -32,7 +36,7 @@ $conn->close();
 <body>
     <div class="main">
         <div class="top-section">
-            <img src="<?php echo $doctor['profile_photo']; ?>" class="profile">
+            <img src="uploads/<?php echo $doctor['profile_photo']; ?>" class="profile">
             <p class="p1"><?php echo $doctor['name']; ?></p>
             <p class="p2"><?php echo $doctor['specialty']; ?></p>
         </div>
@@ -44,11 +48,12 @@ $conn->close();
                 <p class="head">Contact</p>
                 <p class="p3"><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<?php echo $doctor['phone_no']; ?></p>
                 <p class="p3"><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;<?php echo $doctor['email']; ?></p>
-                <p class="p3"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;<?php echo $doctor['location']; ?></p>
+                <p class="p3"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;<?php echo $doctor['address']; ?></p>
 
                 <br/><br/>
 
                 <p class="head">Location</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.8168723083672!2d80.9466382744793!3d6.293701125792175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae6a8516f9211e9%3A0xd5be240343b8b956!2sHathporuwa%20Sri%20bodirukkaramaya!5e1!3m2!1sen!2slk!4v1721971327915!5m2!1sen!2slk" width="250" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"><?php echo urlencode($doctor['location']); ?></iframe>
                 
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.8168723083672!2d80.9466382744793!3d6.293701125792175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae6a8516f9211e9%3A0xd5be240343b8b956!2sHathporuwa%20Sri%20bodirukkaramaya!5e1!3m2!1sen!2slk!4v1721971327915!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"><?php echo urlencode($doctor['location']); ?></iframe>
             </div>
