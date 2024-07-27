@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch General Practitioner doctors
+
 $sql = "SELECT reg_no, profile_photo, name, district, specialty, hospital FROM doctors WHERE specialty = 'General Practitioner'";
 $result = $conn->query($sql);
 

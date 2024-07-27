@@ -28,20 +28,20 @@
         <!-- Display messages -->
         <div class="message-box">
             <?php
-            // Start session
+            
             session_start();
 
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
                 
                 echo "<p class='error' style='color: #D8000C; font-size:15px; margin-left: 83px;'>{$_SESSION['error_message']}</p>";
-                $_SESSION['error_message'] = ''; // Clear the message after displaying
+                $_SESSION['error_message'] = ''; 
             }
 
             // Display success message if any
             if (!empty($_SESSION['success_message'])) {
                 echo "<p class='success'>{$_SESSION['success_message']}</p>";
-                $_SESSION['success_message'] = ''; // Clear the message after displaying
+                $_SESSION['success_message'] = ''; 
             }
             ?>
         </div>

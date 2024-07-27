@@ -44,12 +44,12 @@
 
         if (!empty($_SESSION['error_message'])) {
             echo "<p class='error'>{$_SESSION['error_message']}</p>";
-            $_SESSION['error_message'] = ''; // Clear the message after displaying
+            $_SESSION['error_message'] = ''; 
         }
 
         if (!empty($_SESSION['success_message'])) {
             echo "<p class='success'>{$_SESSION['success_message']}</p>";
-            $_SESSION['success_message'] = ''; // Clear the message after displaying
+            $_SESSION['success_message'] = ''; 
         }
         ?>
     </div>
@@ -65,7 +65,7 @@
 </div>
 
 <?php
-// Include the database connection file
+
 include 'database.php';
 
 // Check if the form is submitted for search
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
     }
 }
 
-// Check if the form is submitted for deletion
+// form is submitted for deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);

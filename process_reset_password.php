@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST['new_password']);
     $password_confirmation = trim($_POST['password_confirmation']);
 
-    // Basic validation
+    
     if (empty($email) || empty($new_password) || empty($password_confirmation)) {
         $_SESSION['error_message'] = 'Please fill all fields.';
         header("Location: reset_password.php");
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Hash the new password
+    
     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
     // Update the password and clear OTP
