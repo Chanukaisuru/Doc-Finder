@@ -12,7 +12,9 @@
         <a href="home.html" class="logo">
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div> DOC FINDER
+                </div>
+                <div class = "log"><p>DOC FINDER </p>
+            </div>
         </a>
         <div class="auth-buttons">
             <a href="login.html" class="btn">Log in</a>
@@ -28,7 +30,7 @@
 
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
-                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                echo "<p class='error' style='color: #D8000C; font-size:15px; margin-left: 100px; '>{$_SESSION['error_message']}</p>";
                 $_SESSION['error_message'] = ''; // Clear the message after displaying
             }
 

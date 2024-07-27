@@ -66,11 +66,11 @@ $conn->close();
             <div class="content-box">
                 <p class="head">Ordination times</p>
                 <ul class="day-list">
-                    <li class="day"><span>Monday</span><span>11.00 am - 2.00 pm</span></li>
-                    <li class="day"><span>Tuesday</span><span>11.00 am - 2.00 pm</span></li>
-                    <li class="day"><span>Wednesday</span><span>11.00 am - 2.00 pm</span></li>
-                    <li class="day"><span>Thursday</span><span>11.00 am - 2.00 pm</span></li>
-                    <li class="day"><span>Friday</span><span>11.00 am - 2.00 pm</span></li>
+                    <li class="day"><span>Monday</span><span>8.00 am - 4.00 pm</span></li>
+                    <li class="day"><span>Tuesday</span><span>8.00 am - 4.00 pm</span></li>
+                    <li class="day"><span>Wednesday</span><span>8.00 am - 4.00 pm</span></li>
+                    <li class="day"><span>Thursday</span><span>8.00 am - 4.00 pm</span></li>
+                    <li class="day"><span>Friday</span><span>8.00 am - 4.00 pm</span></li>
                     <li class="day"><span>Saturday</span><span>11.00 am - 2.00 pm</span></li>
                     <li class="day"><span>Sunday</span><span>11.00 am - 2.00 pm</span></li>
                 </ul>
