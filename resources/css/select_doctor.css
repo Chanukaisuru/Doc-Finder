@@ -46,8 +46,9 @@ body {
 .district_filter h3 {
     margin: 20px;
     color: #040b2e;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
 }
 
 .fil-p {
@@ -65,22 +66,6 @@ body {
     border-radius: 15px;
 }
 
-/*.fil-p{
-     font-size: 15px;
-     font-weight: 600;
-    
-     margin: 10px;
-     width: 100px;
-     height: 60px;
-     background:#192a56;
-     cursor: pointer;
-     border: none;
-     border-radius: 15px;
-     color: #ffffff;
-     box-shadow:  10px 10px 10px -1px rgba(0, 0, 0, 0.199), -10px -10px 10px -1px rgb(221, 220, 220);
-     margin-left: 50px;
-    
-}*/
 
 .fil-p:hover {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -88,13 +73,14 @@ body {
     transform: scale(0.9);
     background: #afabab;
     color: #192a56;
+    font-weight: 600;
 }
 
 .content {
     width: 75%;
     position: absolute;
     right: 0;
-    padding-bottom: 50px; /* Add padding to prevent content from overlapping with the bottom */
+    padding-bottom: 50px; 
 }
 
 .header {
@@ -115,9 +101,11 @@ body {
 
 .header p {
     font-size: 50px;
+    font-family: 'Nunito', sans-serif;
     font-weight: bold;
-    color: #000000;
+    color: #040b2e;
     margin-top: 10px;
+    
    
 }
 
