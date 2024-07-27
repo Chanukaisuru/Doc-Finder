@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Registration</title>
+    <title>Patient Registration</title>
     <link rel="icon" href="resources/img/doc_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="resources/css/register_doctor.css">
-
-    <title>Patient Registration</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="resources/css/loging.css">
-
-    
-
 </head>
 <body>
     <div class="headers">
@@ -26,32 +21,30 @@
 
     <div class="wrapper">
         <h1>Patient Registration</h1>
-          <!-- Display messages -->
-          <div class="message-box">
+        <!-- Display messages -->
+        <div class="message-box">
             <?php
             // Start session
             session_start();
 
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
-                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                echo "<p class='error' style='color: #D8000C;'>{$_SESSION['error_message']}</p>";
                 $_SESSION['error_message'] = ''; // Clear the message after displaying
             }
 
             // Display success message if any
             if (!empty($_SESSION['success_message'])) {
-                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                echo "<p class='success' style='color: #D8000C;'>{$_SESSION['success_message']}</p>";
                 $_SESSION['success_message'] = ''; // Clear the message after displaying
             }
             ?>
         </div>
         <form action="process_register_patient.php" method="post" enctype="multipart/form-data">
-            
             <div class="input-box">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
-
             <div class="input-box">
                 <label for="nic">NIC:</label>
                 <input type="text" id="nic" name="nic" required>
@@ -84,10 +77,9 @@
                 <label for="sick">Sick:</label>
                 <input type="text" id="sick" name="sick" required>
             </div>
-
             <button type="submit" class="btn">Register</button>
             <br>
-            <p> you have an account  <a href ="login.html"> loging here</p></a>
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
         </form>
     </div>
 </body>
