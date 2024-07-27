@@ -56,6 +56,7 @@ $conn->close();
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.8168723083672!2d80.9466382744793!3d6.293701125792175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae6a8516f9211e9%3A0xd5be240343b8b956!2sHathporuwa%20Sri%20bodirukkaramaya!5e1!3m2!1sen!2slk!4v1721971327915!5m2!1sen!2slk" width="250" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"><?php echo urlencode($doctor['location']); ?></iframe>
                 
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.8168723083672!2d80.9466382744793!3d6.293701125792175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae6a8516f9211e9%3A0xd5be240343b8b956!2sHathporuwa%20Sri%20bodirukkaramaya!5e1!3m2!1sen!2slk!4v1721971327915!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"><?php echo urlencode($doctor['location']); ?></iframe>
+                <iframe src="<?php echo $doctor['location']; ?>" width="250" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>   
         
