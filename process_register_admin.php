@@ -2,7 +2,7 @@
 session_start();
 include 'database.php';
 
-// Clear previous messages
+
 $_SESSION['error_message'] = '';
 $_SESSION['success_message'] = '';
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Hash the password
+    
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Check the number of existing admins

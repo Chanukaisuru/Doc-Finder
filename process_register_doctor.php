@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'database.php'; // Make sure this file contains your DB connection details
+include 'database.php';
 
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,12 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $specialty = $_POST['specialty'];
     $profile_photo = $_FILES['profile_photo']['name'];
 
-    // File upload configuration
+    
     $targetDir = "uploads/";
     $targetFilePath = $targetDir . basename($profile_photo);
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    // Allow certain file formats
+    
     $allowTypes = array('jpg','png','jpeg','gif');
     if(in_array($fileType, $allowTypes)){
         // Upload file to server
@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Insert new user record
             $sql = "INSERT INTO users (email, user_name, password, role_no) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $defaultPassword = ''; // Set default password or hash it
-            $role_no = 2; // Assuming 2 is the role for doctors
+            $defaultPassword = ''; 
+            $role_no = 2; 
             $stmt->bind_param("sssi", $email, $name, $defaultPassword, $role_no);
 
             if($stmt->execute()){
-                $user_id = $stmt->insert_id; // Get the auto-incremented user_id
+                $user_id = $stmt->insert_id; 
 
                 // Insert new doctor record
                 $sql = "INSERT INTO doctors (reg_no, user_id, name, phone_no, district, location, qualification, specialty, profile_photo, hospital, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

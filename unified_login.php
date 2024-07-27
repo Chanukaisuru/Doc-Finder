@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Prepare SQL query
+    
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Set session variables based on role
+    
     $_SESSION['user_name'] = $user['user_name'];
     $_SESSION['role_no'] = $user['role_no'];
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: admin_dashboard.html");
         exit();
     } else {
-        // Add additional role-based redirects here if needed
+        
         header("Location: user_dashboard.html"); 
         exit();
     }

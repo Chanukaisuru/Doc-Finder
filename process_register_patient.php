@@ -25,13 +25,13 @@ $result_check_email = $stmt_check_email->get_result();
 
 if ($result_check_email->num_rows > 0) {
     $_SESSION['error_message'] = 'Email already registered.';
-    header("Location: register_patient.php"); // Redirect back to the registration page
+    header("Location: register_patient.php"); 
     exit();
 }
 
 $stmt_check_email->close();
 
-// Insert into users table
+
 $sql_user = "INSERT INTO users (email, user_name, role_no, created_at) VALUES (?, ?, 3, NOW())";
 $stmt_user = $conn->prepare($sql_user);
 $stmt_user->bind_param("ss", $email, $first_name);
@@ -48,7 +48,7 @@ if ($stmt_user->execute()) {
 
     if ($result_check_nic->num_rows > 0) {
         $_SESSION['error_message'] = 'NIC already registered.';
-        // Rollback the user insertion
+        
         $conn->query("DELETE FROM users WHERE user_id = $user_id");
         header("Location: register_patient.php"); // Redirect back to the registration page
         exit();
@@ -68,7 +68,7 @@ if ($stmt_user->execute()) {
         exit();
     } else {
         $_SESSION['error_message'] = 'Error registering patient: ' . $stmt_patient->error;
-        // Rollback the user insertion
+        
         $conn->query("DELETE FROM users WHERE user_id = $user_id");
     }
 } else {
@@ -78,6 +78,6 @@ if ($stmt_user->execute()) {
 $stmt_user->close();
 $stmt_patient->close();
 $conn->close();
-header("Location: register_patient.php"); // Redirect back to the registration page
+header("Location: register_patient.php");
 exit();
 ?>

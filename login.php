@@ -42,13 +42,13 @@
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
                 echo "<p class='error'>{$_SESSION['error_message']}</p>";
-                $_SESSION['error_message'] = ''; // Clear the message after displaying
+                $_SESSION['error_message'] = ''; 
             }
 
             // Display success message if any
             if (!empty($_SESSION['success_message'])) {
                 echo "<p class='success'>{$_SESSION['success_message']}</p>";
-                $_SESSION['success_message'] = ''; // Clear the message after displaying
+                $_SESSION['success_message'] = ''; 
             }
             ?>
             </div>

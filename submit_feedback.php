@@ -9,13 +9,13 @@ include 'database.php';
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect and sanitize form data
+    
     $name = $conn->real_escape_string(trim($_POST['name']));
     $email = $conn->real_escape_string(trim($_POST['email']));
     $contact_number = isset($_POST['contact_number']) ? $conn->real_escape_string(trim($_POST['contact_number'])) : '';
     $feedback_text = $conn->real_escape_string(trim($_POST['feedback']));
 
-    // Prepare and bind
+    
     $stmt = $conn->prepare("INSERT INTO feedback (name, email, contact_number, feedback_text) VALUES (?, ?, ?, ?)");
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($conn->error));
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . htmlspecialchars($stmt->error);
     }
 
-    // Close the statement and connection
+    
     $stmt->close();
     $conn->close();
 } else {

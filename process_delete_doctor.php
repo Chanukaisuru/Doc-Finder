@@ -65,7 +65,7 @@
 <div>
     <div class="wrapper">
         <h1>Delete Doctor</h1>
-        <!-- Message Box for Error and Success Messages -->
+        
         <div class="message-box">
             <p id="message"></p>
         </div>
@@ -88,7 +88,7 @@
     // Include the database connection file
     include 'database.php';
 
-    // Check if the form is submitted for search
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
         // Get form data
         $email = $_POST['email'];
@@ -156,11 +156,11 @@
         $reg_no = $_POST['reg_no'];
         $user_id = $_POST['user_id'];
 
-        // Start a transaction
+        
         $conn->begin_transaction();
 
         try {
-            // Prepare the delete statement for the doctors table
+            
             $sql_doctors = "DELETE FROM doctors WHERE reg_no = ?";
             $stmt_doctors = $conn->prepare($sql_doctors);
 
@@ -170,7 +170,7 @@
 
             $stmt_doctors->bind_param("s", $reg_no);
 
-            // Execute the statement and check if any row was affected
+            
             if ($stmt_doctors->execute() && $stmt_doctors->affected_rows > 0) {
                 // Prepare the delete statement for the users table
                 $sql_users = "DELETE FROM users WHERE user_id = ?";
@@ -196,7 +196,7 @@
                 throw new Exception('No doctor found with that registration number.');
             }
         } catch (Exception $e) {
-            // Rollback the transaction if an error occurred
+            
             $conn->rollback();
             echo '<script>document.getElementById("message").innerHTML = "Error: ' . $e->getMessage() . '"; document.getElementById("message").classList.add("error");</script>';
         }
