@@ -9,156 +9,161 @@
 </head>
 <body>
 <div class="headers">
-<a href="home.html" class="logo">
-            <div class="lo">
-                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div>
-                <div class = "log"><p>DOC FINDER </p>
-            </div>
-        </a>
-
+    <a href="home.html" class="logo">
+        <div class="lo">
+            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+        </div>
+        <div class="log"><p>DOC FINDER</p></div>
+    </a>
     <div class="auth-buttons">
-                <a href="home.html" class="btn">Home</a>
-                <a href="admin_dashboard.html" class="btn">Admin dashboard</a>
+        <a href="home.html" class="btn">Home</a>
+        <a href="admin_dashboard.html" class="btn">Admin Dashboard</a>
     </div>
-
 </div>
 
-<!-- enter Admin Email -->
-<div>
-    <div class="wrapper">
-        <h1 style='color: black;'>Delete Admin</h1>
-        <form method="post" action="">
-            <div class="input-box">
-                <label for="email">Admin's Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <br>
-            <input type="submit" class="btn" name="search" value="Search">
-        </form>
+<div class="wrapper">
+    <h1 style='color: black;'>Delete Admin</h1>
+    <!-- Display messages -->
+    <div class="message-box">
+        <?php
+        session_start();
+
+        if (!empty($_SESSION['error_message'])) {
+            echo "<p class='error'>{$_SESSION['error_message']}</p>";
+            $_SESSION['error_message'] = ''; // Clear the message after displaying
+        }
+
+        if (!empty($_SESSION['success_message'])) {
+            echo "<p class='success'>{$_SESSION['success_message']}</p>";
+            $_SESSION['success_message'] = ''; // Clear the message after displaying
+        }
+        ?>
     </div>
 
-    <?php
-    // Include the database connection file
-    include 'database.php';
+    <form method="post">
+        <div class="input-box">
+            <label for="email">Admin's Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <input type="submit" class="btn" name="search" value="Search">
+    </form>
+</div>
 
-    // Check if the form is submitted for search
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
-        // Get form data
-        $email = $_POST['email'];
+<?php
+// Include the database connection file
+include 'database.php';
 
-        // Validate form data
-        if (empty($email)) {
-            echo 'Please provide the admin\'s email.';
-        } else {
-            // Prepare the select statement for the users table
-            $sql_admin = "SELECT user_name, email, created_at FROM users WHERE email = ? AND role_no = 1";
-            $stmt_admin = $conn->prepare($sql_admin);
+// Check if the form is submitted for search
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
+    $email = trim($_POST['email']);
 
-            if (!$stmt_admin) {
-                die('Prepare failed: ' . $conn->error);
-            }
+    if (empty($email)) {
+        $_SESSION['error_message'] = 'Please provide the admin\'s email.';
+        header("Location: delete_admin.php");
+        exit();
+    } else {
+        $sql_admin = "SELECT user_name, email, created_at FROM users WHERE email = ? AND role_no = 1";
+        $stmt_admin = $conn->prepare($sql_admin);
 
-            $stmt_admin->bind_param("s", $email);
+        if ($stmt_admin === false) {
+            die('Prepare failed: ' . htmlspecialchars($conn->error));
+        }
 
-            if ($stmt_admin->execute()) {
-                $result = $stmt_admin->get_result();
+        $stmt_admin->bind_param("s", $email);
+        $stmt_admin->execute();
+        $result = $stmt_admin->get_result();
 
-                if ($result->num_rows > 0) {
-                    // Fetch and display the admin's details
-                    $admin = $result->fetch_assoc();
-                    ?>
-                    <div class="sr">
-                    <h2>Admin Details</h2>
-                    <p><strong>Name:</strong> <?php echo htmlspecialchars($admin['user_name']); ?></p>
-                    <p><strong>Email:</strong> <?php echo htmlspecialchars($admin['email']); ?></p>
-                    <p><strong>Created At:</strong> <?php echo htmlspecialchars($admin['created_at']); ?></p>
+        if ($result->num_rows > 0) {
+            $admin = $result->fetch_assoc();
+            ?>
+            <div class="wrapper">
+                <h2>Admin Details</h2>
+                <p><strong>Name:</strong> <?php echo htmlspecialchars($admin['user_name']); ?></p>
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($admin['email']); ?></p>
+                <p><strong>Created At:</strong> <?php echo htmlspecialchars($admin['created_at']); ?></p>
+                
+                <form method="post" action="">
+                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                    <div class="input-box1">
+                        <label for="password"><span style="font-size:16px; color:black; font-weight: bold;">Admin's Password:</span></label>
+                        <input type="password" id="password" name="password" required>
                     </div>
-
-                    <!-- Form to confirm deletion -->
-                    <form method="post" action="">
-                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
-                        <div class="input-box1">
-                            <label for="password"><span style="font-size:16px; color:black; font-weight: bold;">Admin's Password:</span></label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <input type="submit" name="delete" value="Delete Admin" class="delete-btn">
-                    </form>
-
-                    <?php
-                } else {
-                    echo '<p style="color: red; font-weight: bold; font-size: 15px; background-color: #fdd; border-radius: 20px; padding: 10px;">No admin found with that email.</p>';
-                }
-            } else {
-                echo 'Error: ' . $stmt_admin->error;
-            }
-
-            // Close the statement
-            $stmt_admin->close();
-        }
-    }
-
-    // Check if the form is submitted for deletion
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-        // Get form data
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Prepare the select statement to get the hashed password
-        $sql_password = "SELECT password FROM users WHERE email = ? AND role_no = 1";
-        $stmt_password = $conn->prepare($sql_password);
-
-        if (!$stmt_password) {
-            die('Prepare failed: ' . $conn->error);
-        }
-
-        $stmt_password->bind_param("s", $email);
-
-        if ($stmt_password->execute()) {
-            $result = $stmt_password->get_result();
-
-            if ($result->num_rows > 0) {
-                $admin = $result->fetch_assoc();
-                $hashed_password = $admin['password'];
-
-                // Verify the password
-                if (password_verify($password, $hashed_password)) {
-                    // Prepare the delete statement for the users table
-                    $sql_admin = "DELETE FROM users WHERE email = ? AND role_no = 1";
-                    $stmt_admin = $conn->prepare($sql_admin);
-
-                    if (!$stmt_admin) {
-                        die('Prepare failed: ' . $conn->error);
-                    }
-
-                    $stmt_admin->bind_param("s", $email);
-
-                    // Execute the statement and check if any row was affected
-                    if ($stmt_admin->execute() && $stmt_admin->affected_rows > 0) {
-                        // Redirect to the admin dashboard with a success message
-                        header("Location: admin_dashboard.html");
-                        exit();
-                    } else {
-                        echo 'No admin found with that email.';
-                    }
-
-                    // Close statement and connection
-                    $stmt_admin->close();
-                } else {
-                    echo 'Incorrect password.';
-                }
-            } else {
-                echo 'No admin found with that email.';
-            }
+                    <input type="submit" name="delete" value="Delete Admin" class="delete-btn">
+                </form>
+            </div>
+            <?php
         } else {
-            echo 'Error: ' . $stmt_password->error;
+            $_SESSION['error_message'] = 'No admin found with that email.';
+            header("Location: delete_admin.php");
+            exit();
         }
 
-        // Close statement and connection
-        $stmt_password->close();
-        $conn->close();
+        $stmt_admin->close();
     }
-    ?>
-</div>
+}
+
+// Check if the form is submitted for deletion
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    if (empty($email) || empty($password)) {
+        $_SESSION['error_message'] = 'Please fill in all fields.';
+        header("Location: delete_admin.php");
+        exit();
+    }
+
+    $sql_password = "SELECT password FROM users WHERE email = ? AND role_no = 1";
+    $stmt_password = $conn->prepare($sql_password);
+
+    if ($stmt_password === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+
+    $stmt_password->bind_param("s", $email);
+    $stmt_password->execute();
+    $result = $stmt_password->get_result();
+
+    if ($result->num_rows > 0) {
+        $admin = $result->fetch_assoc();
+        $hashed_password = $admin['password'];
+
+        if (password_verify($password, $hashed_password)) {
+            $sql_delete = "DELETE FROM users WHERE email = ? AND role_no = 1";
+            $stmt_delete = $conn->prepare($sql_delete);
+
+            if ($stmt_delete === false) {
+                die('Prepare failed: ' . htmlspecialchars($conn->error));
+            }
+
+            $stmt_delete->bind_param("s", $email);
+            if ($stmt_delete->execute() && $stmt_delete->affected_rows > 0) {
+                $_SESSION['success_message'] = 'Admin deleted successfully.';
+                header("Location: admin_dashboard.html");
+                exit();
+            } else {
+                $_SESSION['error_message'] = 'Error deleting admin. Please try again.';
+                header("Location: delete_admin.php");
+                exit();
+            }
+
+            $stmt_delete->close();
+        } else {
+            $_SESSION['error_message'] = 'Incorrect password.';
+            header("Location: delete_admin.php");
+            exit();
+        }
+    } else {
+        $_SESSION['error_message'] = 'No admin found with that email.';
+        header("Location: delete_admin.php");
+        exit();
+    }
+
+    $stmt_password->close();
+}
+
+$conn->close();
+?>
 </body>
 </html>

@@ -8,31 +8,41 @@ session_start();
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
     // Basic validation
     if (empty($email) || empty($password)) {
-        die('Please fill all fields.');
+        $_SESSION['error_message'] = 'Please fill all fields.';
+        header("Location: login.php");
+        exit();
     }
 
     // Prepare SQL query
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     // Check if user exists
     if ($result->num_rows === 0) {
-        die('User not found.');
+        $_SESSION['error_message'] = 'User not found.';
+        header("Location: login.php");
+        exit();
     }
 
     $user = $result->fetch_assoc();
 
     // Verify password
     if (!password_verify($password, $user['password'])) {
-        die('Invalid password.');
+        $_SESSION['error_message'] = 'Invalid password.';
+        header("Location: login.php");
+        exit();
     }
 
     // Set session variables based on role
@@ -42,9 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Redirect based on role
     if ($user['role_no'] == 1) {
         header("Location: admin_dashboard.html");
-    
+        exit();
+    } else {
+        // Add additional role-based redirects here if needed
+        header("Location: user_dashboard.html"); 
+        exit();
     }
-    exit();
 }
-?>
-
