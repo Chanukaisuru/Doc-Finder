@@ -27,9 +27,9 @@
 
             <nav class="navbar">
                 <a class="active" href="home.html">Home</a>
-                <a href="Doc-GeneralPractitioner.html">Select Doctors</a>
+                <a href="javascript:void(0);" class="select-doctor-link">Select Doctors</a>
                 <a href="feedback.html">Feedback</a>
-                <a href="login.html">Admin</a>
+                <a href="login.php">Admin</a>
                 <a href="contact_us.html">Contact US</a>
             </nav>
         
@@ -156,7 +156,7 @@
         </div>
 
         <!-- sub body part -->
-        <section class="causes">
+        <section id="disease-info" class="causes">
             <div class="heading">
                 <h1>Diseases</h1>
             </div>
@@ -399,15 +399,12 @@
         <div class="credit">&copy;2024  Created by <span> Group 06 </span> | All Rights Reserved </div>
 
         </section>
-
-
-        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-        <script src="js/style.js"></script>
-
-    </body>
-</html>
-
-
-
+        
+        <script>
+            document.querySelector('.select-doctor-link').addEventListener('click', function() {
+                document.getElementById('disease-info').scrollIntoView({ behavior: 'smooth' });
+            });
+            </script>
+            
     </body>
 </html>
