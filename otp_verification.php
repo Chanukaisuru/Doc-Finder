@@ -15,14 +15,13 @@
             </div> DOC FINDER
         </a>
         <div class="auth-buttons">
-            <a href="login.html" class="btn">Loggin</a>
-            
+            <a href="login.html" class="btn">Log in</a>
         </div>
     </div>
     <div class="wrapper">
         <h1>Verify OTP</h1>
-          <!-- Display messages -->
-          <div class="message-box">
+        <!-- Display messages -->
+        <div class="message-box">
             <?php
             // Start session
             session_start();

@@ -1,4 +1,7 @@
 <?php
+// Start session
+session_start();
+
 // Include the database connection file
 include 'database.php';
 
@@ -9,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate input
     if (empty($email) || empty($otp_code)) {
-         $_SESSION['error_message'] ='Please fill all fields.';
+        $_SESSION['error_message'] = 'Please fill all fields.';
+        header("Location: otp_verification.php");
+        exit();
     }
-
-    
 
     // Check if the email and OTP code are valid and the OTP has not expired
     $sql = "SELECT * FROM users WHERE email = ? AND otp_code = ?";
@@ -26,19 +29,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        $_SESSION['error_message'] ='Invalid OTP or email.';
+        $_SESSION['error_message'] = 'Invalid OTP or email.';
+        header("Location: otp_verification.php");
+        exit();
     } else {
         $user = $result->fetch_assoc();
         $otp_expires_at = $user['otp_expires_at'];
 
-        
-
         if (new DateTime($otp_expires_at) < new DateTime()) {
-            $_SESSION['error_message'] ='OTP has expired.';
+            $_SESSION['error_message'] = 'OTP has expired.';
+            header("Location: otp_verification.php");
+            exit();
         } else {
-            
-           //OTP verified successful
-           header("Location: reset_password.html");
+            // OTP verified successfully
+            $_SESSION['success_message'] = 'OTP verified successfully.';
+            header("Location: reset_password.html");
+            exit();
         }
     }
 
