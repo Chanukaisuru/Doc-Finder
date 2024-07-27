@@ -73,6 +73,7 @@ body {
     transform: scale(0.9);
     background: #afabab;
     color: #192a56;
+    font-weight: 600;
 }
 
 .content {
