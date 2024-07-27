@@ -53,7 +53,6 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn">Login</button>
-            <p>If you don't have an account, <a href="sign_up.html">create an account here</a>.</p>
             <p><a href="forgot_password.html">Forgot Password?</a></p>
         </form>
     </div>
