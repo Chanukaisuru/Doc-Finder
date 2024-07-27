@@ -27,7 +27,7 @@
 <!-- enter Admin Email -->
 <div>
     <div class="wrapper">
-        <h1>Delete Admin</h1>
+        <h1 style='color: black;'>Delete Admin</h1>
         <form method="post" action="">
             <div class="input-box">
                 <label for="email">Admin's Email:</label>
@@ -87,7 +87,7 @@
 
                     <?php
                 } else {
-                    echo 'No admin found with that email.';
+                    echo '<p style="color: red; font-weight: bold; font-size: 15px; background-color: #fdd; border-radius: 20px; padding: 10px;">No admin found with that email.</p>';
                 }
             } else {
                 echo 'Error: ' . $stmt_admin->error;

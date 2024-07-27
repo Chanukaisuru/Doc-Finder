@@ -1,4 +1,7 @@
 <?php
+// Start session
+session_start();
+
 // Include Composer's autoloader
 require 'vendor/autoload.php';
 
@@ -14,18 +17,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
 
     if (empty($email)) {
-        die('Please fill all fields.');
+        $_SESSION['error_message'] = 'Please fill all fields.';
+        header("Location: forgot_password.php");
+        exit();
     }
 
-    // Check if the email exists in the users table
-    $sql = "SELECT * FROM users WHERE email = ?";
+    // Check if the email exists in the users table and is an admin
+    $sql = "SELECT * FROM users WHERE email = ? AND role_no = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        die('User not found.');
+        $_SESSION['error_message'] = 'Admin user not found.';
+        header("Location: forgot_password.php");
+        exit();
     }
 
     $user = $result->fetch_assoc();
@@ -59,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('no-reply@yourdomain.com', 'Your App Name');
+        $mail->setFrom('no-reply@yourdomain.com', 'DOC FINDER');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
@@ -67,10 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = $message;
 
         $mail->send();
-        //echo "OTP sent to your email."; wnido alat
+        $_SESSION['success_message'] = 'OTP sent to your email.';
         header("Location: otp_verification.html");
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $_SESSION['error_message'] = 'Message could not be sent. Please send an email to docfinder2001@gmail.com';
+        header("Location: forgot_password.php");
     }
 }
 ?>
