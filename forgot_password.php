@@ -17,6 +17,10 @@
                 <p>DOC FINDER </p>
             </div>
         </a>
+        <div class="auth-buttons">
+            <a href="home.html" class="btn">Home</a>
+            
+        </div>
     </div>
 
     <div class="wrapper">
@@ -29,7 +33,8 @@
 
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
-                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                
+                echo "<p class='error' style='color: #D8000C; font-size:15px; margin-left: 83px;'>{$_SESSION['error_message']}</p>";
                 $_SESSION['error_message'] = ''; // Clear the message after displaying
             }
 
@@ -45,7 +50,7 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn">Send</button>
         </form>
     </div>
 </body>
