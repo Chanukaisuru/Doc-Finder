@@ -13,20 +13,39 @@
             <div class="lo">
                 <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
             </div>
-                <div class = "log"><p>DOC FINDER </p>
+            <div class="log">
+                <p>DOC FINDER </p>
             </div>
         </a>
     </div>
 
     <div class="wrapper">
         <h1>Forgot Password</h1>
+        <!-- Display messages -->
+        <div class="message-box">
+            <?php
+            // Start session
+            session_start();
+
+            // Display error message if any
+            if (!empty($_SESSION['error_message'])) {
+                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                $_SESSION['error_message'] = ''; // Clear the message after displaying
+            }
+
+            // Display success message if any
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; // Clear the message after displaying
+            }
+            ?>
+        </div>
         <form action="process_forgot_password.php" method="post" novalidate>
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <button type="submit" class="btn">Submit</button>
-            
         </form>
     </div>
 </body>
