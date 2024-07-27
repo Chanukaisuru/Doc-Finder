@@ -23,7 +23,7 @@
 
 </div>
 
-<!-- Form to enter Admin Email -->
+<!-- enter Admin Email -->
 <div>
     <div class="wrapper">
         <h1>Delete Admin</h1>
@@ -141,7 +141,7 @@
                         echo 'No admin found with that email.';
                     }
 
-                    // Close the statement and connection
+                    // Close statement and connection
                     $stmt_admin->close();
                 } else {
                     echo 'Incorrect password.';
@@ -153,7 +153,7 @@
             echo 'Error: ' . $stmt_password->error;
         }
 
-        // Close the statement and connection
+        // Close statement and connection
         $stmt_password->close();
         $conn->close();
     }
