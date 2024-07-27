@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2024 at 08:24 PM
+-- Generation Time: Jul 27, 2024 at 09:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `doctors` (
-  `reg_no` varchar(100) NOT NULL,
+  `reg_no` varchar(50) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `phone_no` varchar(20) DEFAULT NULL,
   `district` varchar(50) DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
+  `location` varchar(1000) DEFAULT NULL,
   `qualification` varchar(255) DEFAULT NULL,
   `specialty` varchar(100) DEFAULT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
@@ -46,11 +46,10 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`reg_no`, `user_id`, `name`, `phone_no`, `district`, `location`, `qualification`, `specialty`, `profile_photo`, `hospital`, `address`) VALUES
-('mbbs123', 57, 'Tharindu Dilshan', '0766263405', 'Galle', 'matara', 'mbbs1258', 'Orthopedic surgeon', 'uploads/Screenshot 2024-07-12 073501.png', 'matara', NULL),
-('mbbs1232689', NULL, 'Tharindu Dilshan', '0766263405', 'Colombo', 'matara', 'mbbs1258', 'Gynecologist', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
-('mbbs123454', NULL, 'Tharindu Dilshan', '0766263405', 'Kandy', 'matara', 'xsdfghnbvc2652', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
-('mbbs1235', 60, 'Tharindu Dilshan', '0766263405', 'Colombo', '6.175126004190012, 80.60610863497429', 'mbbs1258', 'Orthopedic surgeon', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
-('mbbs12389', 59, 'Tharindu Dilshan', '0766263405', 'Matara', 'matara', 'xsdfghnbvc2652', 'Dermatologist', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala');
+('mbbs1', 66, 'Tharindu Dilshan', '0766263405', 'Matara', '6.175126004190012, 80.60610863497429', 'mbbs', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs123', 63, 'Tharindu Dilshan', '0766263405', 'Matara', '6.175126004190012, 80.60610863497429', 'xsdfghnbvc', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs123268925', 65, 'Tharindu Dilshan', '0766263405', 'Matara', '6.175126004190012, 80.60610863497429', 'xsdfghnbvc', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala'),
+('mbbs1234', 64, 'Tharindu Dilshan', '0766263405', 'Matara', '6.175126004190012, 80.60610863497429', 'mbbs', 'General Practitioner', 'Screenshot 2024-07-12 073501.png', 'matara', 'kotapolagedara, thennapita, gomila,mawarala');
 
 -- --------------------------------------------------------
 
@@ -131,11 +130,17 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `email`, `user_name`, `password`, `role_no`, `otp_code`, `otp_expires_at`, `created_at`) VALUES
 (54, 'ravinduhasith7002@gmail.com', 'admin', '$2y$10$qHuseJQBCXz17PN1eITDwOi7m7xJaDlpBEyQr/3XDe7BN5KmDZBGK', 1, '705229', '2024-07-24 18:36:53', '2024-07-24 05:45:56'),
-(55, 'tharindudilshan6263@gmail.com', 'admin', '$2y$10$xPNPSB45f3oJ0Ksl4b//Y.7KRc2j2JecBbryqv3wM2F3TQLKzmTWC', 1, NULL, NULL, '2024-07-24 06:31:49'),
+(55, 'tharindudilshan6263@gmail.com', 'admin', '$2y$10$8Infs14/JeiNszRZY8nn/OGlTd.2/RR9nNtuBH3wOYr5ZgeQ9noDG', 1, NULL, NULL, '2024-07-24 06:31:49'),
 (57, 'chanukaisuru26@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 17:08:34'),
 (58, 'tharindudilshan626563@gmail.com', 'Tharindu Dilshan', '$2y$10$NZ.icS9.BfZVR3FnHyrPOu1KmNASGlSD0KgTt7MmYho8QXL4VQoZK', 2, NULL, NULL, '2024-07-25 17:59:48'),
 (59, 'tharindudilshan656263@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:03:15'),
-(60, 'chanukaisuru256@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:05:27');
+(60, 'chanukaisuru256@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:05:27'),
+(61, 'chanukaisuru2622@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:33:20'),
+(62, 'tharindudilshan62643@gmail.com', 'Tharindu', '', 2, NULL, NULL, '2024-07-25 18:35:53'),
+(63, 'chanukaisuru26@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:40:39'),
+(64, 'tharindudilshan62563@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 18:52:13'),
+(65, 'tharindu123@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 19:05:27'),
+(66, 'tharindu125@gmail.com', 'Tharindu Dilshan', '', 2, NULL, NULL, '2024-07-25 19:15:55');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +198,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Constraints for dumped tables

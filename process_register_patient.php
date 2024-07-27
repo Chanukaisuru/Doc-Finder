@@ -53,7 +53,8 @@ if ($stmt_user->execute()) {
     $stmt_patient->bind_param("sisssssss", $nic, $user_id, $first_name, $last_name, $age, $phone_no, $address, $province, $sick);
 
     if ($stmt_patient->execute()) {
-        echo "Patient registered successfully.";
+        //Patient registered successfully.
+        header("Location: home.html");
     } else {
         echo "Error: " . $stmt_patient->error;
     }
