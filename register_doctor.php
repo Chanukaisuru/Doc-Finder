@@ -92,7 +92,7 @@
             </div>
             <div class="input-box">
                 <label for="location">Location (Map):</label>
-                <input type="text" id="location" name="location" required placeholder="Enter location name"><br><br>
+                <input type="text" id="location" name="location" required placeholder="Enter location link"><br><br>
             </div>
             <div class="input-box">
                 <label for="qualification">Qualification:</label>
