@@ -16,11 +16,29 @@
         </a>
         <div class="auth-buttons">
             <a href="login.html" class="btn">Login</a>
-            
         </div>
     </div>
     <div class="wrapper">
         <h1>Reset Password</h1>
+        <!-- Display messages -->
+        <div class="message-box">
+            <?php
+            // Start session
+            session_start();
+
+            // Display error message if any
+            if (!empty($_SESSION['error_message'])) {
+                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                $_SESSION['error_message'] = ''; // Clear the message after displaying
+            }
+
+            // Display success message if any
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; // Clear the message after displaying
+            }
+            ?>
+        </div>
         <form method="post" action="process_reset_password.php">
             <div class="input-box">
                 <label for="email">Email:</label>
@@ -34,7 +52,6 @@
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
             </div><br>
-
             <input type="submit" class="btn" value="Reset Password">
         </form>
     </div>
