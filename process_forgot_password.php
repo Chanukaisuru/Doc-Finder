@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = $message;
 
         $mail->send();
-        $_SESSION['success_message'] = 'OTP sent to your email.';
+    
         header("Location: otp_verification.html");
     } catch (Exception $e) {
         $_SESSION['error_message'] = 'Message could not be sent. Please send an email to docfinder2001@gmail.com';
