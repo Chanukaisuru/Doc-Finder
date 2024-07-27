@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         // Add additional role-based redirects here if needed
-        header("Location: user_dashboard.html"); // Assuming you have a user dashboard
+        header("Location: user_dashboard.html"); 
         exit();
     }
 }
