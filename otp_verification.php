@@ -30,7 +30,7 @@
 
             // Display error message if any
             if (!empty($_SESSION['error_message'])) {
-                echo "<p class='error'>{$_SESSION['error_message']}</p>";
+                echo "<p class='error' style='color: #D8000C; font-size:15px; margin-left: 100px; '>{$_SESSION['error_message']}</p>";
                 $_SESSION['error_message'] = ''; // Clear the message after displaying
             }
 
