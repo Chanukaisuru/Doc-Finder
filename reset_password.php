@@ -36,7 +36,7 @@
 
             // Display success message if any
             if (!empty($_SESSION['success_message'])) {
-                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                echo "<p class='success'style='color: #D8000C; font-size:15px; margin-left: 70px; '>{$_SESSION['success_message']}</p>";
                 $_SESSION['success_message'] = '';
             }
             ?>
