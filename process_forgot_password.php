@@ -47,10 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $otp_code, $otp_expires_at, $email);
     $stmt->execute();
 
-    // Read email template
+    // use email template
     $template = file_get_contents('email_template.html');
 
-    // Replace placeholder with actual OTP code
+    // actual OTP code
     $message = str_replace('{{OTP_CODE}}', $otp_code, $template);
 
     $subject = "Password Reset OTP";
