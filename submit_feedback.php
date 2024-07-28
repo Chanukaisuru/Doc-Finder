@@ -12,17 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate and sanitize inputs
     $name = $conn->real_escape_string(trim($_POST['full_name']));
     $email = $conn->real_escape_string(trim($_POST['email']));
-    $contact_number = $conn->real_escape_string(trim($_POST['contact_number']));
     $feedback_text = $conn->real_escape_string(trim($_POST['message_details']));
 
     //  SQL statement
-    $stmt = $conn->prepare("INSERT INTO feedback (name, email, contact_number, feedback_text) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO feedback (name, email, feedback_text) VALUES (?, ?, ?, ?)");
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($conn->error));
     }
 
     // Bind parameters
-    $stmt->bind_param("ssss", $name, $email, $contact_number, $feedback_text);
+    $stmt->bind_param("ssss", $name, $email, $feedback_text);
 
     // Execute the statement
     if ($stmt->execute()) {

@@ -1,14 +1,11 @@
 <?php
-// Enable error reporting
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 // Database connection 
 include 'database.php';
 
 // Fetch feedbacks from the database
-$sql = "SELECT name, email, contact_number, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
+$sql = "SELECT name, email, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $conn->query($sql);
 ?>
 
@@ -41,7 +38,6 @@ $result = $conn->query($sql);
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Contact Number</th>
                         <th>Feedback</th>
                         <th>Date Submitted</th>
                     </tr>
@@ -54,7 +50,6 @@ $result = $conn->query($sql);
                             echo "<tr>
                                     <td>" . htmlspecialchars($row['name']) . "</td>
                                     <td>" . htmlspecialchars($row['email']) . "</td>
-                                    <td>" . htmlspecialchars($row['contact_number']) . "</td>
                                     <td>" . htmlspecialchars($row['feedback_text']) . "</td>
                                     <td>" . htmlspecialchars($row['submitted_at']) . "</td>
                                 </tr>";
