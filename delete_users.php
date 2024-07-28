@@ -64,7 +64,7 @@
         <div class="message-box">
             <p id="message"></p>
         </div>
-        <form method="post" action="" onsubmit="return validateForm()">
+        <form method="post" onsubmit="return validateForm()">
             <div class="input-box">
                 <label for="email">User Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -78,10 +78,10 @@
     </div>
 
     <?php
-    // Include the database connection file
+    //  database connection file
     include 'database.php';
 
-    // Check if the form is submitted for search
+    // Check  form is submitted for search
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
         // Get form data
         $email = $_POST['email'];
@@ -114,7 +114,7 @@
                 $result = $stmt_patients->get_result();
 
                 if ($result->num_rows > 0) {
-                    // Fetch and display the patient's details
+                    // Fetch display the patient's details
                     $patient = $result->fetch_assoc();
                     ?>
                     <h2>Patient Details</h2>
@@ -153,7 +153,7 @@
         }
     }
 
-    // Check if the form is submitted for deletion
+    // Check form is submitted for deletion
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
         // Get form data
         $email = $_POST['email'];

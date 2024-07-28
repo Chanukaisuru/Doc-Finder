@@ -68,7 +68,7 @@
 
 include 'database.php';
 
-// Check if the form is submitted for search
+// Check  form is submitted 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
     $email = trim($_POST['email']);
 
