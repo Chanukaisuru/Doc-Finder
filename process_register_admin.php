@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: login.php");
     } else {
         $_SESSION['error_message'] = "Error: " . $stmt_user->error;
-        header("Location: register_admin.php");
+        header("Location: register_admin.php"); //change location
     }
 
     $stmt_user->close();
