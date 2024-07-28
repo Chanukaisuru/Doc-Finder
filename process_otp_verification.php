@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // OTP verified successfully
             $_SESSION['success_message'] = 'OTP verified successfully.';
-            header("Location: reset_password.html");
+            header("Location: reset_password.php");
             exit();
         }
     }

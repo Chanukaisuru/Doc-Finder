@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ss", $hashed_password, $email);
     if ($stmt->execute()) {
         $_SESSION['success_message'] = 'Password reset successfully. Please log in with your new password.';
-        header("Location: login.html");
+        header("Location: login.php");
         exit();
     } else {
         $_SESSION['error_message'] = 'Error updating password. Please try again.';

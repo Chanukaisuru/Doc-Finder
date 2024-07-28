@@ -63,7 +63,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn">Login</button>
-            <p><a href="forgot_password.html">Forgot Password?</a></p>
+            <p><a href="forgot_password.php">Forgot Password?</a></p>
         </form>
     </div>
 </div>
