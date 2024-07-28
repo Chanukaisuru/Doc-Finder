@@ -11,8 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $full_name, $email, $message_details);
 
     if ($stmt->execute()) {
-        header("Location: home.html");
-        echo "New record created successfully";
+        //header("Location: home.html");
+       
+        echo "<script>alert('Contack informaino submitted successfully'); window.location.href='home.html';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }

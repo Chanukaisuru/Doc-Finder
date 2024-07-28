@@ -1,8 +1,13 @@
 <?php
+// Enable error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Database connection 
 include 'database.php';
 
-
+// Fetch feedbacks from the database
 $sql = "SELECT name, email, contact_number, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $conn->query($sql);
 ?>
@@ -20,12 +25,12 @@ $result = $conn->query($sql);
 
 <body>
     <div class="headers">
-    <a href="home.html" class="logo">
-        <div class="lo">
-            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-        </div>
-        <div class="log"><p>DOC FINDER</p></div>
-    </a>
+        <a href="home.html" class="logo">
+            <div class="lo">
+                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+            </div>
+            <div class="log"><p>DOC FINDER</p></div>
+        </a>
     </div>
 
     <section id="feedback-section" class="wrapper">
@@ -63,7 +68,6 @@ $result = $conn->query($sql);
         </div>
     </section>
 
-    
     <form action="admin_dashboard.html" method="get">
         <button type="submit" class="btn">Go to Admin Dashboard</button>
     </form>
