@@ -38,7 +38,11 @@
                 $_SESSION['error_message'] = ''; 
             }
 
-            
+            // Display success message 
+            if (!empty($_SESSION['success_message'])) {
+                echo "<p class='success'>{$_SESSION['success_message']}</p>";
+                $_SESSION['success_message'] = ''; 
+            }
             ?>
         </div>
         <form action="process_forgot_password.php" method="post" novalidate>
