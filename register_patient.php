@@ -12,11 +12,12 @@
 </head>
 <body>
     <div class="headers">
-        <a href="home.html" class="logo">
-            <div class="lo">
-                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div> DOC FINDER
-        </a>
+    <a href="home.html" class="logo">
+        <div class="lo">
+            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+        </div>
+        <div class="log"><p>DOC FINDER</p></div>
+    </a>
     </div>
 
     <div class="wrapper">
