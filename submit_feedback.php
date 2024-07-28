@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the statement
     if ($stmt->execute()) {
         echo "<script>alert('Feedback submitted successfully'); window.location.href='home.html';</script>";
+        
     } else {
         echo "Error: " . htmlspecialchars($stmt->error);
     }
