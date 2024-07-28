@@ -63,8 +63,8 @@ if ($stmt_user->execute()) {
 
     if ($stmt_patient->execute()) {
         // Patient registered successfully
-        $_SESSION['success_message'] = 'Patient registered successfully.';
-        header("Location: home.html"); // Redirect to the home page
+       // $_SESSION['success_message'] = 'Patient registered successfully.';
+        header("Location: home.html"); 
         exit();
     } else {
         $_SESSION['error_message'] = 'Error registering patient: ' . $stmt_patient->error;

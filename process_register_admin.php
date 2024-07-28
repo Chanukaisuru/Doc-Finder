@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt_user->execute()) {
         $_SESSION['success_message'] = "Admin registered successfully!";
-        header("Location: register_admin.php");
+        header("Location: login.php");
     } else {
         $_SESSION['error_message'] = "Error: " . $stmt_user->error;
         header("Location: register_admin.php");
