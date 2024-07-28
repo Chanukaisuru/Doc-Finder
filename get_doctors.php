@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'database.php';//database connction
 
 $specialty = isset($_GET['specialty']) ? $_GET['specialty'] : '';
 
@@ -21,8 +21,8 @@ $doctors = array();
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        // Add the full path to the profile photo
-        $row['profile_photo'] = 'uploads/' . $row['profile_photo'];
+       
+        $row['profile_photo'] = 'uploads/' . $row['profile_photo'];    //  path to the profile photo
         $doctors[] = $row;
     }
 }
