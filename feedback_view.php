@@ -20,11 +20,12 @@ $result = $conn->query($sql);
 
 <body>
     <div class="headers">
-        <a href="#" class="logo">
-            <div class="lo">
-                <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
-            </div> DOC FINDER
-        </a>
+    <a href="home.html" class="logo">
+        <div class="lo">
+            <img src="resources/img/doc_logo.png" style="width: 100px; height:65px">
+        </div>
+        <div class="log"><p>DOC FINDER</p></div>
+    </a>
     </div>
 
     <section id="feedback-section" class="wrapper">
