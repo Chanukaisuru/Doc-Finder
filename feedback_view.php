@@ -4,7 +4,7 @@
 // Database connection 
 include 'database.php';
 
-// Fetch feedbacks from the database
+// Fetch feedbacks 
 $sql = "SELECT name, email, feedback_text, submitted_at FROM feedback ORDER BY submitted_at DESC";
 $result = $conn->query($sql);
 ?>
