@@ -110,7 +110,7 @@
                     // Fetch and display the doctor's details
                     $doctor = $result->fetch_assoc();
                     ?>
-                    <div class="sr">
+                    <div class="wrapper1">
                         <h2>Doctor Details</h2>
                         <p><strong>Registration Number:</strong> <?php echo htmlspecialchars($doctor['reg_no']); ?></p>
                         <p><strong>Name:</strong> <?php echo htmlspecialchars($doctor['name']); ?></p>
