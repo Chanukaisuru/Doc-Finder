@@ -71,8 +71,8 @@
                 <input type="text" id="address" name="address" required>
             </div>
             <div class="input-box">
-                <label for="province">District:</label>
-                <input type="text" id="province" name="province" required>
+                <label for="district">District:</label>
+                <input type="text" id="district" name="district" required>
             </div>
             <div class="input-box">
                 <label for="sick">Sick:</label>
