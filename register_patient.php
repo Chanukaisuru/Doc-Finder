@@ -80,7 +80,7 @@
             </div>
             <button type="submit" class="btn">Register</button>
             <br>
-            <p>Already have an account? <a href="login.html">Log in here</a></p>
+            
         </form>
     </div>
 </body>
