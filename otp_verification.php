@@ -17,7 +17,7 @@
             </div>
         </a>
         <div class="auth-buttons">
-            <a href="login.html" class="btn">Log in</a>
+            <a href="login.php" class="btn">Log in</a>
         </div>
     </div>
     <div class="wrapper">
