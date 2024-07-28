@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<!-- Form to enter Email and Registration Number -->
+
 <div>
     <div class="wrapper">
         <h1>Delete Doctor</h1>
@@ -85,12 +85,12 @@
     </div>
 
     <?php
-    // Include the database connection file
+    //  database connection file
     include 'database.php';
 
     
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
-        // Get form data
+        // Get data
         $email = $_POST['email'];
         $reg_no = $_POST['reg_no'];
 
@@ -107,7 +107,7 @@
                 $result = $stmt_doctors->get_result();
 
                 if ($result->num_rows > 0) {
-                    // Fetch and display the doctor's details
+                    // Fetch display the doctor's details
                     $doctor = $result->fetch_assoc();
                     ?>
                     <div class="wrapper1">
@@ -144,14 +144,14 @@
                 echo '<script>document.getElementById("message").innerHTML = "Error: ' . $stmt_doctors->error . '"; document.getElementById("message").classList.add("error");</script>';
             }
 
-            // Close the statement
-            $stmt_doctors->close();
+            
+            $stmt_doctors->close(); //Close the statement
         }
     }
 
     // Check if the form is submitted for deletion
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-        // Get form data
+        
         $email = $_POST['email'];
         $reg_no = $_POST['reg_no'];
         $user_id = $_POST['user_id'];
@@ -186,7 +186,7 @@
                 if ($stmt_users->execute() && $stmt_users->affected_rows > 0) {
                     // Commit the transaction
                     $conn->commit();
-                    // Redirect to the admin dashboard with a success message
+                    
                     header("Location: admin_dashboard.html");
                     exit();
                 } else {
@@ -201,7 +201,7 @@
             echo '<script>document.getElementById("message").innerHTML = "Error: ' . $e->getMessage() . '"; document.getElementById("message").classList.add("error");</script>';
         }
 
-        // Close the statements and connection
+        // Close statements and connection
         if (isset($stmt_users)) {
             $stmt_users->close();
         }

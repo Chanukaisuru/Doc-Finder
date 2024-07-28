@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-// Check if the admin is logged in
+// Check admin  logged 
 if (!isset($_SESSION['admin_name'])) {
     
     exit();

@@ -25,7 +25,7 @@
         <!-- Display messages -->
         <div class="message-box">
             <?php
-            // Start session
+            
             session_start();
 
             // Display error message if any
