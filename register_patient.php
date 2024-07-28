@@ -70,7 +70,7 @@
                 <input type="text" id="address" name="address" required>
             </div>
             <div class="input-box">
-                <label for="province">Province:</label>
+                <label for="province">District:</label>
                 <input type="text" id="province" name="province" required>
             </div>
             <div class="input-box">
