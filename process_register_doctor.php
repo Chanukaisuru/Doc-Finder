@@ -30,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadStatus = 1;
         } else {
             $uploadStatus = 0;
-            $_SESSION['error_message'] = 'Sorry, there was an error uploading your file.';
+            $_SESSION['error_message'] = 'Sorry, there was an error uploading your file.'; //display error message
         }
     } else {
         $uploadStatus = 0;
-        $_SESSION['error_message'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed.';
+        $_SESSION['error_message'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed.'; //display error message
     }
 
     if($uploadStatus == 1){
