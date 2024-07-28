@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         //header("Location: home.html");
        
-        echo "<script>alert('Contack informaino submitted successfully'); window.location.href='home.html';</script>";
+        echo "<script>alert('Contact Informatino Submitted Successfully'); window.location.href='home.html';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
