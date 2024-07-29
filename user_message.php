@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $full_name, $email, $message_details);
 
     if ($stmt->execute()) {
-        //header("Location: home.html");
        
         echo "<script>alert('Contact Informatino Submitted Successfully'); window.location.href='home.html';</script>";
     } else {
